@@ -65,11 +65,6 @@ resource "aws_iam_role" "reporting_lambda_role" {
   assume_role_policy = "${data.aws_iam_policy_document.lambda_policy_document.json}"
 }
 
-resource "aws_iam_role_policy_attachment" "lambda_sqs_policy_attachement" {
-  role       = "${aws_iam_role.reporting_lambda_role.id}"
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaSQSQueueExecutionRole"
-}
-
 resource "aws_lambda_layer_version" "elastic_lambda_layer" {
   layer_name          = "elastic_lambda_layer"
   description         = "The ElasticSearch dependency for use within reporting lambdas"
@@ -91,11 +86,16 @@ resource "aws_lambda_function" "sierra_varFields" {
   layers           = ["${aws_lambda_layer_version.elastic_lambda_layer.arn}"]
 }
 
-# resource "aws_lambda_event_source_mapping" "sierra_updates_to_sierra_varFields_mapping" {
-#   event_source_arn = "${local.sierra_updates_topic_arn}"
-#   function_name    = "${aws_lambda_function.sierra_varFields.arn}"
-# }
+resource "aws_lambda_permission" "with_sns" {
+  statement_id  = "AllowExecutionFromSNS"
+  action        = "lambda:InvokeFunction"
+  function_name = "${aws_lambda_function.sierra_varFields.function_name}"
+  principal     = "sns.amazonaws.com"
+  source_arn    = "${local.sierra_updates_topic_arn}"
+}
 
-output "things" {
-  value = "${local.sierra_updates_topic_arn}"
+resource "aws_sns_topic_subscription" "reporting_lambda_sns_topic_subscription" {
+  topic_arn = "${local.sierra_updates_topic_arn}"
+  protocol  = "lambda"
+  endpoint  = "${aws_lambda_function.sierra_varFields.arn}"
 }
