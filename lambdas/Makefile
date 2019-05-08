@@ -9,4 +9,4 @@ test:
 	exit 1
 
 deploy:
-	aws s3 cp ./$(name)/$(name).zip s3://wellcomecollection-platform-infra/lambdas/reporting/
+	aws s3 --profile reporting-dev cp ./$(name)/$(name).zip s3://wellcomecollection-reporting-lambdas/
