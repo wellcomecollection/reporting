@@ -41,13 +41,11 @@ resource "aws_lambda_permission" "with_sns" {
 
 # This needs permissions from the SNS account to be able to be created.
 # Watch this space.
-# resource "aws_sns_topic_subscription" "reporting_lambda_sns_topic_subscription" {
-#   topic_arn = "${local.sierra_updates_topic_arn}"
-#   protocol  = "lambda"
-#   endpoint  = "${aws_lambda_function.sierra_varFields.arn}"
-
-#   provider = "aws.aws_platform"
-# }
+resource "aws_sns_topic_subscription" "reporting_lambda_sns_topic_subscription" {
+  protocol  = "lambda"
+  topic_arn = "${local.sierra_updates_topic_arn}"
+  endpoint  = "${aws_lambda_function.sierra_varFields.arn}"
+}
 
 data "aws_iam_policy_document" "lambda_policy_document" {
   statement {
