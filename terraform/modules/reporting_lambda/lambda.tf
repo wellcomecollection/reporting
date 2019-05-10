@@ -8,6 +8,16 @@ resource "aws_iam_role" "reporting_lambda_role" {
   assume_role_policy = "${data.aws_iam_policy_document.lambda_policy_document.json}"
 }
 
+resource "aws_iam_role_policy_attachment" "lambda_basic_execution_policy_attachement" {
+  role       = "${aws_iam_role.reporting_lambda_role.id}"
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+}
+
+resource "aws_iam_role_policy_attachment" "s3_get_objects_policy_attachement" {
+  role       = "${aws_iam_role.reporting_lambda_role.id}"
+  policy_arn = "${aws_iam_policy.s3_get_objects_policy.arn}"
+}
+
 resource "aws_lambda_layer_version" "elastic_lambda_layer" {
   layer_name          = "elastic_lambda_layer"
   description         = "The ElasticSearch dependency for use within reporting lambdas"
@@ -58,5 +68,18 @@ data "aws_iam_policy_document" "lambda_policy_document" {
         "lambda.amazonaws.com",
       ]
     }
+  }
+}
+
+resource "aws_iam_policy" "s3_get_objects_policy" {
+  name   = "S3GetObjectsPolicy"
+  policy = "${data.aws_iam_policy_document.s3_get_objects_policy_document.json}"
+}
+
+data "aws_iam_policy_document" "s3_get_objects_policy_document" {
+  statement {
+    effect    = "Allow"
+    actions   = ["s3:GetObject"]
+    resources = ["arn:aws:s3:::wellcomecollection-vhs-sourcedata-sierra/*"]
   }
 }
