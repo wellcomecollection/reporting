@@ -41,19 +41,33 @@ resource "aws_lambda_function" "sierra_varFields" {
   layers  = ["${aws_lambda_layer_version.elastic_lambda_layer.arn}"]
 }
 
-resource "aws_lambda_permission" "with_sns" {
-  statement_id  = "AllowExecutionFromSNS"
+# Sierra updates permissions
+resource "aws_lambda_permission" "with_sns_sierra_updates" {
+  statement_id  = "AllowExecutionFromSNSSierraUpdates"
   action        = "lambda:InvokeFunction"
   function_name = "${aws_lambda_function.sierra_varFields.function_name}"
   principal     = "sns.amazonaws.com"
   source_arn    = "${local.sierra_updates_topic_arn}"
 }
 
-# This needs permissions from the SNS account to be able to be created.
-# Watch this space.
-resource "aws_sns_topic_subscription" "reporting_lambda_sns_topic_subscription" {
+resource "aws_sns_topic_subscription" "reporting_lambda_sns_sierra_updates_topic_subscription" {
   protocol  = "lambda"
   topic_arn = "${local.sierra_updates_topic_arn}"
+  endpoint  = "${aws_lambda_function.sierra_varFields.arn}"
+}
+
+# Reindex permissions
+resource "aws_lambda_permission" "with_sns_sierra_reindex" {
+  statement_id  = "AllowExecutionFromSNSReindex"
+  action        = "lambda:InvokeFunction"
+  function_name = "${aws_lambda_function.sierra_varFields.function_name}"
+  principal     = "sns.amazonaws.com"
+  source_arn    = "${local.sierra_reindex_topic_arn}"
+}
+
+resource "aws_sns_topic_subscription" "reporting_lambda_sns_sierra_reindex_topic_subscription" {
+  protocol  = "lambda"
+  topic_arn = "${local.sierra_reindex_topic_arn}"
   endpoint  = "${aws_lambda_function.sierra_varFields.arn}"
 }
 
