@@ -7,8 +7,8 @@ import certifi
 import boto3
 import botocore
 
-# This is used for local testing and shouldn't affect lamdas
-# As a non-existing path doesn't matter
+# This is used for local testing and will not get used by lambdas.
+# It doesn't matter as adding an empty path never hurt anyone.
 sys.path.insert(0, os.path.abspath('../../lambda_layers/python'))
 from elasticsearch import Elasticsearch
 from elasticsearch import helpers
@@ -46,50 +46,53 @@ def flatten_varField(varField):
 
 index = 'reporting_sierra_varfields'
 def main(event, context):
-    print('----------------')
-    print(event)
-    print('----------------')
-    messageJsonString = event['Records'][0]['Sns']['Message']
-    message = json.loads(messageJsonString)
+    message_json_string = event['Records'][0]['Sns']['Message']
+    message = json.loads(message_json_string)
     location = message['location']
     response = s3_client.get_object(Bucket=location['namespace'], Key=location['key'])
     body = response['Body'].read().decode('utf-8')
     s3Json = json.loads(body)
-    maybeBibRecord = s3Json['maybeBibRecord']
-    if (maybeBibRecord):
-        data = json.loads(maybeBibRecord['data'])
+    maybe_bib_record = s3Json['maybeBibRecord']
+    if (maybe_bib_record):
+        data = json.loads(maybe_bib_record['data'])
         varFields = data['varFields']
-        es_credentials = get_es_credentials()
-        es = Elasticsearch(
-            es_credentials['url'],
-            http_auth=(es_credentials['username'], es_credentials['password']),
-            use_ssl=True,
-            ca_certs=certifi.where(),
-        )
-        """
-        We're looking for a format of
-        {
-            "id": "129038",
-            "varfields": {
-                "260": {
-                    "label": "London : Faber and Faber limited, [1938]",
-                    "a": "London : ",
-                    "b": "Faber and Faber limited,",
-                    "c": "[1938]"
+        id = data['id']
+
+        if len(varFields) > 1:
+            es_credentials = get_es_credentials()
+            es = Elasticsearch(
+                es_credentials['url'],
+                http_auth=(es_credentials['username'], es_credentials['password']),
+                use_ssl=True,
+                ca_certs=certifi.where(),
+            )
+            """
+            We're looking for a format of
+            {
+                "id": "129038",
+                "varfields": {
+                    "260": {
+                        "label": "London : Faber and Faber limited, [1938]",
+                        "a": "London : ",
+                        "b": "Faber and Faber limited,",
+                        "c": "[1938]"
+                    }
                 }
             }
-        }
-        We then do updates, which will eventually lead us to 
-        """
-        flattened_varFields = {varField['marcTag']: flatten_varField(varField) for varField in varFields if 'subfields' in varField}
-        res = es.update(
-            index=index,
-            id=data['id'],
-            body={
-                'doc': { 'varfields': flattened_varFields},
-                'doc_as_upsert': True
-            },
-            doc_type='doc'
-        )
-        print(res)
+            We then do updates, which will eventually lead us to 
+            """
+            flattened_varFields = {varField['marcTag']: flatten_varField(varField) for varField in varFields if 'subfields' in varField}
+            res = es.update(
+                index=index,
+                id=id,
+                body={
+                    'doc': { 'varfields': flattened_varFields},
+                    'doc_as_upsert': True
+                },
+                doc_type='doc'
+            )
+            print('Tried to index with result:')
+            print(res)
+        else:
+            print('No varFields to index for record {}'.format(id))
 
