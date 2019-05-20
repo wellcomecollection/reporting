@@ -1,6 +1,9 @@
 {
   "mappings": {
     "doc": {
+      "properties": {
+        "material_type": { "type": "keyword"  }
+      },
       "dynamic_templates": [
         {
           "varfields": {
