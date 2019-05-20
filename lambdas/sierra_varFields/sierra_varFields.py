@@ -9,7 +9,7 @@ import botocore
 
 # This is used for local testing and will not get used by lambdas.
 # It doesn't matter as adding an empty path never hurt anyone.
-sys.path.insert(0, os.path.abspath('../../lambda_layers/python'))
+sys.path.insert(0, os.path.abspath('../../elastic_lambda_layer/python'))
 from elasticsearch import Elasticsearch
 from elasticsearch import helpers
 

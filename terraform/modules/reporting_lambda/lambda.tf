@@ -37,8 +37,8 @@ resource "aws_lambda_function" "sierra_varFields" {
   handler       = "sierra_varFields.main"
 
   # source_code_hash = "${filebase64sha256("../lambdas/sierra_varFields/sierra_varFields.zip")}"
-  runtime = "python3.7"
-  layers  = ["${aws_lambda_layer_version.elastic_lambda_layer.arn}"]
+  runtime                        = "python3.7"
+  layers                         = ["${aws_lambda_layer_version.elastic_lambda_layer.arn}"]
   reserved_concurrent_executions = 100
 }
 
