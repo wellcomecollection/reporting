@@ -1,0 +1,1 @@
+This code has been adapted from [an old version of Wellcome's `terraform-modules` lambda module](https://github.com/wellcometrust/terraform-modules/tree/v10.2.2/lambda), with the added ability to use [lambda layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html) and to subscribe each lambda to multiple SNS topics.

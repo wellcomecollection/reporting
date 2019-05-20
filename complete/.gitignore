@@ -1,0 +1,6 @@
+*.pyc
+*.zip
+# This is the lambda module lookup path
+python/
+.terraform/
+wellcomedigitalplatform.key
