@@ -55,6 +55,8 @@ def main(event, context):
     maybe_bib_record = s3Json['maybeBibRecord']
     if (maybe_bib_record):
         data = json.loads(maybe_bib_record['data'])
+        material_type = data['materialType']['code'].strip()
+
         varFields = data['varFields']
         id = data['id']
 
@@ -79,14 +81,17 @@ def main(event, context):
                     }
                 }
             }
-            We then do updates, which will eventually lead us to 
+            We then do updates, which will eventually lead us to
             """
             flattened_varFields = {varField['marcTag']: flatten_varField(varField) for varField in varFields if 'subfields' in varField}
             res = es.update(
                 index=index,
                 id=id,
                 body={
-                    'doc': { 'varfields': flattened_varFields},
+                    'doc': {
+                        'material_type': material_type,
+                        'varfields': flattened_varFields
+                    },
                     'doc_as_upsert': True
                 },
                 doc_type='doc'
