@@ -6,8 +6,19 @@ workflow "Test and deploy lambdas" {
   ]
 }
 
+# It seems a little nonsensicle to have master rely on the tests, and then
+# deploy rely on "Is master branch", but if the deploy needed the
+# "Is master branch" and the tests, the tests wouldn't run if we weren't on
+# master, as that's how the action dependencies are setup.
+
+# See this example for a similar setup
+# https://github.com/actions/bin/tree/master/filter
+
 action "Is master branch" {
-  needs = ["Test: Elastic layer λ", "Test: Sierra varFields λ"]
+  needs = [
+    "Test: Elastic layer λ",
+    "Test: Sierra varFields λ"
+  ]
   uses = "actions/bin/filter@master"
   args = "branch master"
 }
