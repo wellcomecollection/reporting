@@ -7,9 +7,6 @@ The raw data can be obtained by running:
     python monitoring/scripts/download_oai_harvest.py
 
 from the root of this repo. This will create a file called `calm_records.json`.
-
-The elasticsearch credentials (url, username, and password) should be specified
-by a `es_credentials.json` file in this directory.
 """
 import os
 import json
@@ -17,13 +14,9 @@ import subprocess
 from tqdm import tqdm
 from transform import transform
 from elasticsearch import Elasticsearch
+from wellcome_aws_utils.reporting_utils import get_es_credentials
 
-
-path_to_es_credentials = os.path.join(
-    os.path.dirname(os.path.realpath(__file__)), "es_credentials.json"
-)
-
-es_credentials = json.load(open(path_to_es_credentials))
+es_credentials = get_es_credentials(profile_name='reporting-dev')
 
 es = Elasticsearch(
     es_credentials["url"],

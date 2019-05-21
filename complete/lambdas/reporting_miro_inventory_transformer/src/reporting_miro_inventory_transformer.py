@@ -1,6 +1,15 @@
-from wellcome_aws_utils.reporting_utils import process_messages
+from wellcome_aws_utils.reporting_utils import (get_es_credentials,
+                                                process_messages)
+
 from transform import transform
 
+credentials = get_es_credentials()
 
-def main(event, _, s3_client=None, es_client=None, index=None, doc_type=None):
-    process_messages(event, transform, s3_client, es_client, index, doc_type)
+
+def main(event, _):
+    process_messages(
+        event=event,
+        transform=transform,
+        index='miro_inventory',
+        credentials=credentials
+    )
