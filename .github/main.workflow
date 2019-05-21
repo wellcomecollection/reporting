@@ -1,7 +1,7 @@
 workflow "Deploy" {
   on       = "push"
   resolves = [
-    "Sierra varFields λ"
+    "Deploy: Sierra varFields λ"
   ]
 }
 
@@ -10,17 +10,17 @@ action "Master" {
   args = "branch master"
 }
 
-action "Sierra varFields λ test" {
+action "Test: Sierra varFields λ test" {
   uses  = "./actions/test_lambda/"
   args  = [
     "sierra_varFields"
   ]
 }
 
-action "Sierra varFields λ" {
+action "Deploy: Sierra varFields λ" {
   needs = [
+    "Test: Sierra varFields λ test",
     "Master",
-    "Sierra varFields λ test"
   ]
   uses  = "./actions/deploy_lambda/"
   args  = [
