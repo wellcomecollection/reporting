@@ -8,14 +8,17 @@ action "Master" {
   args = "branch master"
 }
 
-action "Zip" {
-  needs = ["Master"]
-  uses = "./actions/zip/"
+action "Test Sierra varFields λ" {
+  uses  = "./actions/test_lambda/"
+  args  = [
+    "sierra_varFields"
+  ]
 }
 
-action "S3Copy" {
-  needs   = ["Zip"]
-  uses    = "actions/aws/cli@master"
-  args    = "s3 cp ./lambdas/sierra_varFields/sierra_varFields.zip s3://wellcomecollection-reporting-lambdas/"
-  secrets = ["AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY"]
+action "Deploy Sierra varFields λ" {
+  needs = ["Master", "Test Sierra varFields λ"]
+  uses  = "./actions/deploy_lambda/"
+  args  = [
+    "sierra_varFields"
+  ]
 }
