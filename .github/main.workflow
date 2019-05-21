@@ -1,4 +1,4 @@
-workflow "Master" {
+workflow "Test and deploy lambdas" {
   on       = "push"
   resolves = [
     "Deploy: Sierra varFields λ",
@@ -6,15 +6,8 @@ workflow "Master" {
   ]
 }
 
-workflow "PRs" {
-  on       = "push"
-  resolves = [
-    "Test: Sierra varFields λ",
-    "Test: Elastic layer λ"
-  ]
-}
-
 action "Is master branch" {
+  needs = ["Test: Elastic layer λ", "Test: Sierra varFields λ"]
   uses = "actions/bin/filter@master"
   args = "branch master"
 }
@@ -29,7 +22,6 @@ action "Test: Sierra varFields λ" {
 
 action "Deploy: Sierra varFields λ" {
   needs = [
-    "Test: Sierra varFields λ",
     "Is master branch",
   ]
   uses  = "./actions/deploy_lambda/"
@@ -48,7 +40,6 @@ action "Test: Elastic layer λ" {
 
 action "Deploy: Elastic layer λ" {
   needs = [
-    "Test: Sierra varFields λ",
     "Is master branch",
   ]
   uses  = "./actions/deploy_lambda/"
