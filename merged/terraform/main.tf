@@ -1,9 +1,7 @@
 module "lambda_miro_transformer" {
-  source = "./reporting_lambda"
-
+  source      = "./reporting_lambda"
   name        = "reporting_miro_transformer"
   description = "Transform miro source data and send to ES."
-  layers      = ["${aws_lambda_layer_version.utils_layer.arn}"]
 
   vhs_read_policy = "${local.miro_vhs_read_policy}"
 
@@ -16,11 +14,9 @@ module "lambda_miro_transformer" {
 }
 
 module "lambda_miro_inventory_transformer" {
-  source = "./reporting_lambda"
-
+  source      = "./reporting_lambda"
   name        = "reporting_miro_inventory_transformer"
   description = "Transform miro inventory source data and send to ES."
-  layers      = ["${aws_lambda_layer_version.utils_layer.arn}"]
 
   vhs_read_policy = "${local.miro_inventory_vhs_read_policy}"
 
@@ -30,11 +26,9 @@ module "lambda_miro_inventory_transformer" {
 }
 
 module "lambda_sierra_transformer" {
-  source = "./reporting_lambda"
-
+  source      = "./reporting_lambda"
   name        = "reporting_sierra_transformer"
   description = "Transform sierra source data and send to ES."
-  layers      = ["${aws_lambda_layer_version.utils_layer.arn}"]
 
   vhs_read_policy = "${local.sierra_vhs_read_policy}"
 
@@ -47,11 +41,9 @@ module "lambda_sierra_transformer" {
 }
 
 module "lambda_sierra_varfields_transformer" {
-  source = "./reporting_lambda"
-
+  source      = "./reporting_lambda"
   name        = "reporting_sierra_varfields_transformer"
   description = "Send plain sierra varfields to ES."
-  layers      = ["${aws_lambda_layer_version.utils_layer.arn}"]
 
   vhs_read_policy = "${local.sierra_vhs_read_policy}"
 

@@ -46,8 +46,3 @@ data "terraform_remote_state" "sierra_adapter" {
     region = "eu-west-1"
   }
 }
-
-resource "aws_s3_bucket" "reporting_lambdas" {
-  bucket = "wellcomecollection-reporting-lambdas"
-  acl    = "private"
-}

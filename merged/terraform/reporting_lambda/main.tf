@@ -5,13 +5,13 @@ module "reporting_lambda" {
   description = "${var.description}"
   timeout     = "${var.timeout}"
 
-  layers = "${var.layers}"
+  layers = ["${aws_lambda_layer_version.utils_layer.arn}"]
 
   environment_variables = "${var.environment_variables}"
 
   alarm_topic_arn = "${data.terraform_remote_state.shared_infra.lambda_error_alarm_arn}"
 
-  s3_bucket = "${aws_s3_bucket.reporting_lambdas}"
+  s3_bucket = "${aws_s3_bucket.reporting_lambdas.id}"
   s3_key    = "${var.name}.zip"
 
   log_retention_in_days = "${var.log_retention_in_days}"
