@@ -1,6 +1,8 @@
 workflow "Deploy" {
- on       = "push"
- resolves = ["S3Copy"]
+  on       = "push"
+  resolves = [
+    "Sierra varFields λ"
+  ]
 }
 
 action "Master" {
@@ -8,15 +10,18 @@ action "Master" {
   args = "branch master"
 }
 
-action "Test Sierra varFields λ" {
+action "Sierra varFields λ test" {
   uses  = "./actions/test_lambda/"
   args  = [
     "sierra_varFields"
   ]
 }
 
-action "Deploy Sierra varFields λ" {
-  needs = ["Master", "Test Sierra varFields λ"]
+action "Sierra varFields λ" {
+  needs = [
+    "Master",
+    "Sierra varFields λ test"
+  ]
   uses  = "./actions/deploy_lambda/"
   args  = [
     "sierra_varFields"
