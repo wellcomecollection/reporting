@@ -5,7 +5,7 @@ LAMBDA_NAME=$1
 LAMBDA_DIR="./lambdas/$LAMBDA_NAME/src"
 
 cd $LAMBDA_DIR
-  if test -f "./requirements.txt"
+  if [ -f "./requirements.txt" ]
   then
     echo "Installing pip requirements"
     pip3 install -r requirements.txt
