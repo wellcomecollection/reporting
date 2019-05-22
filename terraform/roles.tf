@@ -2,6 +2,10 @@ locals {
   platform_account_root = "arn:aws:iam::760097843905:root"
 }
 
+data "template_file" "pgp_key" {
+  template = "${file("${path.module}/wellcomedigitalplatform.key")}"
+}
+
 module "account" {
   source = "git::https://github.com/wellcometrust/terraform.git//iam/prebuilt/account?ref=v19.13.0"
 
@@ -13,8 +17,4 @@ module "account" {
   monitoring_principals     = ["${local.platform_account_root}"]
 
   pgp_key = "${data.template_file.pgp_key.rendered}"
-}
-
-data "template_file" "pgp_key" {
-  template = "${file("${path.module}/wellcomedigitalplatform.key")}"
 }

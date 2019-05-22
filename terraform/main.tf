@@ -1,43 +1,54 @@
-terraform {
-  required_version = ">= 0.11.12"
+module "lambda_miro_transformer" {
+  source      = "./reporting_lambda"
+  name        = "reporting_miro_transformer"
+  description = "Transform miro source data and send to ES."
 
-  backend "s3" {
-    role_arn = "arn:aws:iam::269807742353:role/developer"
+  vhs_read_policy = "${local.miro_vhs_read_policy}"
 
-    bucket         = "wellcomecollection-reporting-infra"
-    key            = "terraform/reporting.tfstate"
-    dynamodb_table = "terraform-locktable"
-    region         = "eu-west-1"
-  }
+  topic_arns = [
+    "${local.miro_reindex_topic_arn}",
+    "${local.miro_updates_topic_arn}",
+  ]
+
+  topic_count = 2
 }
 
-provider "aws" {
-  version = "~> 2.9"
-  region  = "eu-west-1"
+module "lambda_miro_inventory_transformer" {
+  source      = "./reporting_lambda"
+  name        = "reporting_miro_inventory_transformer"
+  description = "Transform miro inventory source data and send to ES."
 
-  assume_role {
-    role_arn = "arn:aws:iam::269807742353:role/developer"
-  }
+  vhs_read_policy = "${local.miro_inventory_vhs_read_policy}"
+
+  topic_arns = ["${local.miro_inventory_topic_arn}"]
 }
 
-provider "aws" {
-  alias   = "aws_platform"
-  version = "~> 2.9"
-  region  = "eu-west-1"
+module "lambda_sierra_transformer" {
+  source      = "./reporting_lambda"
+  name        = "reporting_sierra_transformer"
+  description = "Transform sierra source data and send to ES."
 
-  assume_role {
-    role_arn = "arn:aws:iam::760097843905:role/developer"
-  }
+  vhs_read_policy = "${local.sierra_vhs_read_policy}"
+
+  topic_arns = [
+    "${local.sierra_reindex_topic_arn}",
+    "${local.sierra_updates_topic_arn}",
+  ]
+
+  topic_count = 2
 }
 
-provider "template" {
-  version = "~> 2.1"
-}
+module "lambda_sierra_varfields_transformer" {
+  source      = "./reporting_lambda"
+  name        = "reporting_sierra_varfields_transformer"
+  description = "Send plain sierra varfields to ES."
 
-module "sierra_varFields_lambda" {
-  source = "modules/reporting_lambda"
+  vhs_read_policy = "${local.sierra_vhs_read_policy}"
 
-  providers = {
-    aws_platform = "aws.aws_platform"
-  }
+  topic_arns = [
+    "${local.sierra_reindex_topic_arn}",
+    "${local.sierra_updates_topic_arn}",
+  ]
+
+  topic_count = 2
 }
