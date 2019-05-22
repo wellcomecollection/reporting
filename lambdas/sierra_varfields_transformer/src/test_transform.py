@@ -1,6 +1,6 @@
 from transform import transform
 
-def test():
+def test_transform():
     vhs_data = {
         'id': '129038',
         'materialType': {
@@ -43,5 +43,3 @@ def test():
     }
     assert transform(vhs_data) == expected_data
 
-if __name__ == '__main__':
-    test()
