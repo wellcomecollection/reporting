@@ -18,7 +18,7 @@ action "Master" {
     "Test: Sierra varFields λ"
   ]
   uses = "actions/bin/filter@master"
-  args = "branch master|github_actions"
+  args = "branch master"
 }
 
 # sierra varfields
