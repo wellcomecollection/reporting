@@ -1,6 +1,5 @@
 test:
-	echo "Tests needed"
-	exit 1
+	pytest $(name)
 	
 install:
 	docker run -v $(shell pwd)/$(name):/src -w /src wellcome/python3 pip install -r requirements.txt --no-deps -t python
