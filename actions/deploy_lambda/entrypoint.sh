@@ -6,7 +6,7 @@ LAMBDA_DIR="./lambdas/$LAMBDA_NAME"
 
 cd $LAMBDA_DIR
   if test -f "./requirements.txt"; then
-    pip install -r requirements.txt
+    pip install -r requirements.txt -t .
   fi
 
   zip -r $LAMBDA_NAME.zip .
