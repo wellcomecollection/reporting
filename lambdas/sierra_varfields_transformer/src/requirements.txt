@@ -8,10 +8,12 @@ attrs==18.2.0
 boto3==1.9.151
 botocore==1.12.151        # via boto3, s3transfer
 certifi==2018.10.15
+daiquiri==1.5.0           # via wellcome-aws-utils
 docutils==0.14            # via botocore
 elasticsearch==6.3.1
 jmespath==0.9.4           # via boto3, botocore
-python-dateutil==2.8.0    # via botocore
+python-dateutil==2.8.0    # via botocore, wellcome-aws-utils
 s3transfer==0.2.0         # via boto3
 six==1.12.0               # via python-dateutil
 urllib3==1.24.3           # via botocore, elasticsearch
+wellcome-aws-utils==2.3.2
