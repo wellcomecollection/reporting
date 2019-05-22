@@ -32,10 +32,17 @@ def transform(input_data):
         }
     }
     """
-    data = json.loads(input_data['maybeBibRecord']['data'])
+
+    json_obj = json.loads(input_data)
+    data = json_obj['maybeBibRecord']['data']
     flattened_varfields = {
         varfield['marcTag']: flatten_varfield(varfield)
-        for varfield in data['varfields'] 
+        for varfield in data['varFields']
         if 'subfields' in varfield
     }
-    return flattened_varfields
+    material_type = data['materialType']['code'].strip()
+    return {
+        'id': data['id'],
+        'material_type': material_type,
+        'varfields': flattened_varfields
+    }

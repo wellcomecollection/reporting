@@ -1,33 +1,43 @@
+import json
 from transform import transform
 
 def test_transform():
     vhs_data = {
-        'id': '129038',
-        'materialType': {
-            'code': 'a '
+        'sierraId': {
+            'recordNumber': '129038'
         },
-        'varFields': [
-            {
-                'marcTag': '260',
-                'fieldTag': 'a',
-                'ind1': '1',
-                'ind2': ' ',
-                'subfields': [
+        'maybeBibRecord': {
+            'id': {'recordNumber': '129038'},
+            'data': {
+                'id': '129038',
+                'materialType': {
+                    'code': 'a '
+                },
+                'varFields': [
                     {
-                        'tag': 'a',
-                        'content': 'London :'
-                    },
-                    {
-                        'tag': 'b',
-                        'content': 'Faber and Faber limited,'
-                    },
-                    {
-                        'tag': 'c',
-                        'content': '[1938]'
+                        'marcTag': '260',
+                        'fieldTag': 'a',
+                        'ind1': '1',
+                        'ind2': ' ',
+                        'subfields': [
+                            {
+                                'tag': 'a',
+                                'content': 'London :'
+                            },
+                            {
+                                'tag': 'b',
+                                'content': 'Faber and Faber limited,'
+                            },
+                            {
+                                'tag': 'c',
+                                'content': '[1938]'
+                            }
+                        ]
                     }
                 ]
-            }
-        ]
+            },
+            'modifiedDate': '2018-11-12T11:55:59Z'
+        }
     }
     expected_data = {
         'id': '129038',
@@ -41,5 +51,5 @@ def test_transform():
             }
         }
     }
-    assert transform(vhs_data) == expected_data
+    assert transform(json.dumps(vhs_data)) == expected_data
 
