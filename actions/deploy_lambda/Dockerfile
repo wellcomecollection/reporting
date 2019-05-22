@@ -11,8 +11,7 @@ LABEL "maintainer"="Wellcome Collection <digital@wellcomecollection.org>"
 
 ARG CLI_VERSION=1.16.161
 RUN apk -uv add --no-cache groff jq less zip && \
-    pip install --no-cache-dir awscli==$CLI_VERSION \
-    export PYTHONDONTWRITEBYTECODE=1
+    pip install --no-cache-dir awscli==$CLI_VERSION
 
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
