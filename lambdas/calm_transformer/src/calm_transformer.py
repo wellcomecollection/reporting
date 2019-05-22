@@ -1,13 +1,3 @@
-"""
-Basic transformer, which cleans up the static calm data before sending it off
-to an elasticsearch index.
-
-The raw data can be obtained by running:
-
-    python monitoring/scripts/download_oai_harvest.py
-
-from the root of this repo. This will create a file called `calm_records.json`.
-"""
 import os
 import json
 import subprocess
@@ -34,9 +24,11 @@ raw_records = json.load(open(path_to_raw_records))
 
 for raw_record in tqdm(raw_records):
     try:
-        record = transform(raw_record)
         res = es.index(
-            index="calm", id=record["RecordID"], doc_type="calm_record", body=record
+            index="calm",
+            id=record["RecordID"],
+            doc_type="_doc",
+            body=transform(raw_record)
         )
     except Exception as e:
         print(e)
