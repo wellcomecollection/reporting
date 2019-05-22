@@ -37,4 +37,8 @@ action "Deploy: Sierra varFields λ" {
   args  = [
     "sierra_varfields_transformer"
   ]
+  secrets = [
+    "AWS_ACCESS_KEY_ID",
+    "AWS_SECRET_ACCESS_KEY"
+  ]
 }
