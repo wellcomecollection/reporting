@@ -9,9 +9,10 @@ import botocore
 
 # This is used for local testing and will not get used by lambdas.
 # It doesn't matter as adding an empty path never hurt anyone.
-sys.path.insert(0, os.path.abspath('../elastic_lambda_layer/python'))
+sys.path.insert(0, os.path.abspath('../elastic_lambda_layer'))
 from elasticsearch import helpers
 from elasticsearch import Elasticsearch
+from weco import hithere
 
 s3_client = boto3.client('s3')
 

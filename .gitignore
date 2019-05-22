@@ -1,6 +1,7 @@
 *.pyc
+__pycache__/
 *.zip
 # This is the lambda module lookup path
-python/
+**/*_layer/*/
 .terraform/
 wellcomedigitalplatform.key

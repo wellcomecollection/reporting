@@ -1,5 +1,5 @@
 install:
-	docker run -v $(shell pwd)/$(name):/src -w /src wellcome/python3 pip install -r requirements.txt --no-deps -t python
+	docker run -v $(shell pwd)/$(name):/src -w /src wellcome/python3 pip install -r requirements.txt --no-deps -t .
 
 zip:
 	pushd $(name) &&  zip -r $(name).zip ./*.py ./python && popd
