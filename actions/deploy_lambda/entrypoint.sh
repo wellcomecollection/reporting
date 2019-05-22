@@ -2,7 +2,7 @@
 set -eu
 
 LAMBDA_NAME=$1
-LAMBDA_DIR="./lambdas/$LAMBDA_NAME"
+LAMBDA_DIR="./lambdas/$LAMBDA_NAME/src"
 
 cd $LAMBDA_DIR
   if test -f "./requirements.txt"; then
