@@ -10,6 +10,7 @@ cd $LAMBDA_DIR
   fi
 
   zip -r $LAMBDA_NAME.zip .
+  aws s3 cp $LAMBDA_NAME.zip s3://wellcomecollection-reporting-lambdas/$LAMBDA_NAME.zip
   echo "Finished building $LAMBDA_NAME"
 cd ../../
 
