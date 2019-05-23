@@ -10,7 +10,7 @@ LABEL "homepage"="http://github.com/wellcometrust/reporting"
 LABEL "maintainer"="Wellcome Collection <digital@wellcomecollection.org>"
 
 ARG CLI_VERSION=1.16.161
-RUN apk -uv add --no-cache groff jq less zip && \
+RUN apk -uv add --no-cache zip && \
     pip install --no-cache-dir awscli==$CLI_VERSION
 
 ADD entrypoint.sh /entrypoint.sh
