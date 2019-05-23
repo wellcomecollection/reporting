@@ -1,0 +1,24 @@
+{
+  "mappings": {
+    "doc": {
+      "properties": {
+        "material_type": { "type": "keyword"  }
+      },
+      "dynamic_templates": [
+        {
+          "varfields": {
+            "path_match": "varfields.*.*",
+            "mapping": {
+              "type": "text",
+              "fields": {
+                "raw": {
+                  "type": "keyword"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

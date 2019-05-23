@@ -4,6 +4,11 @@ data "aws_acm_certificate" "reporting_wc_org" {
   provider = "aws.us_east_1"
 }
 
+resource "aws_s3_bucket" "cloudfront_logs" {
+  bucket = "wellcomecollection-reporting-cloudfront-logs"
+  acl    = "private"
+}
+
 resource "aws_cloudfront_distribution" "reporting" {
   origin {
     domain_name = "c783b93d8b0b4b11900b5793cb2a1865.eu-west-1.aws.found.io"
@@ -61,7 +66,7 @@ resource "aws_cloudfront_distribution" "reporting" {
 
   logging_config {
     include_cookies = false
-    bucket          = "${local.cloudfront_logs_bucket_domain_name}"
+    bucket          = "${aws_s3_bucket.cloudfront_logs.bucket}"
     prefix          = "reporting"
   }
 }

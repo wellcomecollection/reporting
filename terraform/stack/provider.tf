@@ -15,3 +15,7 @@ provider "aws" {
     role_arn = "arn:aws:iam::269807742353:role/developer"
   }
 }
+
+provider "template" {
+  version = "~> 2.1"
+}
