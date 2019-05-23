@@ -1,6 +1,9 @@
 workflow "Test and deploy lambdas" {
   on       = "push"
   resolves = [
+    "Deploy: miro_inventory_transformer",
+    "Deploy: miro_transformer",
+    "Deploy: sierra_transformer",
     "Deploy: sierra_varfields_transformer",
   ]
 }
