@@ -22,7 +22,7 @@ action "Master: miro_inventory_transformer" {
     "Test: miro_inventory_transformer"
   ]
   uses = "actions/bin/filter@master"
-  args = "branch deploy_action"
+  args = "branch master"
 }
 
 action "Test: miro_inventory_transformer" {
@@ -52,7 +52,7 @@ action "Master: miro_transformer" {
     "Test: miro_transformer"
   ]
   uses = "actions/bin/filter@master"
-  args = "branch deploy_action"
+  args = "branch master"
 }
 
 action "Test: miro_transformer" {
@@ -82,7 +82,7 @@ action "Master: sierra_transformer" {
     "Test: sierra_transformer"
   ]
   uses = "actions/bin/filter@master"
-  args = "branch deploy_action"
+  args = "branch master"
 }
 
 action "Test: sierra_transformer" {
@@ -112,7 +112,7 @@ action "Master: sierra_varfields_transformer" {
     "Test: sierra_varfields_transformer"
   ]
   uses = "actions/bin/filter@master"
-  args = "branch deploy_action"
+  args = "branch master"
 }
 
 action "Test: sierra_varfields_transformer" {
