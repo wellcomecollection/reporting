@@ -1,7 +1,6 @@
 import json
 
 import certifi
-from elasticsearch import Elasticsearch
 from wellcome_aws_utils.reporting_utils import get_es_credentials
 
 
