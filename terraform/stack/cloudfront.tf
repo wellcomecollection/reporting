@@ -7,6 +7,15 @@ data "aws_acm_certificate" "reporting_wc_org" {
 resource "aws_s3_bucket" "cloudfront_logs" {
   bucket = "wellcomecollection-reporting-cloudfront-logs"
   acl    = "private"
+
+  lifecycle_rule {
+    id      = "expire_cloudfront_logs"
+    enabled = true
+
+    expiration {
+      days = 30
+    }
+  }
 }
 
 resource "aws_cloudfront_distribution" "reporting" {
@@ -66,7 +75,6 @@ resource "aws_cloudfront_distribution" "reporting" {
 
   logging_config {
     include_cookies = false
-    bucket          = "${aws_s3_bucket.cloudfront_logs.bucket}"
-    prefix          = "reporting"
+    bucket          = "${aws_s3_bucket.cloudfront_logs.bucket_domain_name}"
   }
 }
