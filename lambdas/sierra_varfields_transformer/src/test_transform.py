@@ -33,6 +33,20 @@ def test_transform():
                                 'content': '[1938]'
                             }
                         ]
+                    },
+                    {
+                        'fieldTag': 'y',
+                        'marcTag': '008',
+                        'ind1': ' ',
+                        'ind2': ' ',
+                        'content': '181119s1658    ne            ||| | lat dnamla '
+                    },
+                    {
+                        'fieldTag': 'y',
+                        'marcTag': '007',
+                        'ind1': ' ',
+                        'ind2': ' ',
+                        'content': 'License to kill (should not show up in expected_data)'
                     }
                 ]
             },
@@ -48,8 +62,12 @@ def test_transform():
                 'a': 'London :',
                 'b': 'Faber and Faber limited,',
                 'c': '[1938]'
+            },
+            '008': {
+                'label': '181119s1658    ne            ||| | lat dnamla '
             }
         }
     }
+
     assert transform(json.dumps(vhs_data)) == expected_data
 
