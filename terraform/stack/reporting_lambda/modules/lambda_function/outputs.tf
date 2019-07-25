@@ -10,5 +10,5 @@ output "function_name" {
 
 output "role_name" {
   description = "Name of the IAM role for this Lambda"
-  value       = "${aws_iam_role.iam_role.name}"
+  value       = "${aws_iam_role.lambda_iam_role.name}"
 }

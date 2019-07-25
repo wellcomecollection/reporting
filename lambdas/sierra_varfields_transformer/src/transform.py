@@ -5,12 +5,15 @@ from wellcome_aws_utils.reporting_utils import get_es_credentials
 
 
 def flatten_varfield(varfield):
-    label = ' '.join([
-        subfield['content'] for subfield in varfield['subfields']
+    content_label = varfield.get('content')
+    subfields = varfield.get('subfields') or []
+    subfields_label = ' '.join([
+        subfield['content'] for subfield in subfields
     ])
+    label = content_label or subfields_label
     flattened_subfields = {
         subfield['tag']: subfield['content']
-        for subfield in varfield['subfields']
+        for subfield in subfields
     }
     flattened_varfield = {'label': label, **flattened_subfields}
     return flattened_varfield
@@ -32,12 +35,15 @@ def transform(input_data):
     }
     """
 
+    varfields_whitelist = [
+      "260", "264", "008"
+    ]
     json_obj = json.loads(input_data)
     data = json_obj['maybeBibRecord']['data']
     flattened_varfields = {
         varfield['marcTag']: flatten_varfield(varfield)
         for varfield in data['varFields']
-        if 'subfields' in varfield
+        if varfield["marcTag"] in varfields_whitelist
     }
     material_type = data['materialType']['code'].strip()
     return {
