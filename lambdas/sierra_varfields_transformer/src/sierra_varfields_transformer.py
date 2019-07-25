@@ -11,5 +11,5 @@ def main(event, _):
         event=event,
         transform=transform,
         index='sierra_varfields',
-        credentials=json.dumps(credentials)
+        credentials=credentials
     )
