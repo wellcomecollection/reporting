@@ -21,10 +21,6 @@ resource "aws_lambda_function" "lambda_function" {
   dead_letter_config = {
     target_arn = "${aws_sqs_queue.lambda_dlq.arn}"
   }
-
-  environment {
-    variables = "${var.environment_variables}"
-  }
 }
 
 resource "aws_cloudwatch_metric_alarm" "lambda_alarm" {
