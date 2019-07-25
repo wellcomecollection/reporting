@@ -44,3 +44,7 @@ resource "aws_cloudwatch_metric_alarm" "lambda_alarm" {
   alarm_description = "This metric monitors lambda errors for function: ${var.name}"
   alarm_actions     = ["${var.alarm_topic_arn}"]
 }
+
+output "s3_object_version_id" {
+  value = "${data.aws_s3_bucket_object.package.version_id}"
+}
