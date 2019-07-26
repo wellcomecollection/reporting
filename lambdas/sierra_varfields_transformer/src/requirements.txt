@@ -16,4 +16,4 @@ python-dateutil==2.8.0    # via botocore, wellcome-aws-utils
 s3transfer==0.2.0         # via boto3
 six==1.12.0               # via python-dateutil
 urllib3==1.24.3           # via botocore, elasticsearch
-wellcome-aws-utils==2.3.2
+wellcome-aws-utils==2.3.3
