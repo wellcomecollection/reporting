@@ -38,8 +38,7 @@ def transform(input_data):
     varfields_whitelist = [
       "260", "264", "008", "240", "130", "250", "245", "246"
     ]
-    json_obj = json.loads(input_data)
-    data = json_obj['maybeBibRecord']['data']
+    data = input_data['maybeBibRecord']['data']
     flattened_varfields = {
         varfield['marcTag']: flatten_varfield(varfield)
         for varfield in data['varFields']

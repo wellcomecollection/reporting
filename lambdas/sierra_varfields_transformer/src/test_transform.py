@@ -69,5 +69,5 @@ def test_transform():
         }
     }
 
-    assert transform(json.dumps(vhs_data)) == expected_data
+    assert transform(vhs_data) == expected_data
 
