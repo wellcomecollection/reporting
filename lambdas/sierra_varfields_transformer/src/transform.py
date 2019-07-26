@@ -36,7 +36,7 @@ def transform(input_data):
     """
 
     varfields_whitelist = [
-      "260", "264", "008"
+      "260", "264", "008", "240", "130", "250", "245", "246"
     ]
     json_obj = json.loads(input_data)
     data = json_obj['maybeBibRecord']['data']
