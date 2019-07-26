@@ -47,6 +47,10 @@ def test_transform():
                         'ind1': ' ',
                         'ind2': ' ',
                         'content': 'License to kill (should not show up in expected_data)'
+                    },
+                    {
+                        'content': "00000 km a2200361 i 4500",
+                        'fieldTag': "_"
                     }
                 ]
             }),

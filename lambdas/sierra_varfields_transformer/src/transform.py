@@ -43,7 +43,7 @@ def transform(input_data):
     flattened_varfields = {
         varfield['marcTag']: flatten_varfield(varfield)
         for varfield in data['varFields']
-        if varfield["marcTag"] in varfields_whitelist
+        if varfield.get("marcTag") and varfield["marcTag"] in varfields_whitelist
     }
     material_type = data['materialType']['code'].strip()
     return {
