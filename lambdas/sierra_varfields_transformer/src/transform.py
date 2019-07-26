@@ -34,7 +34,7 @@ def transform(input_data):
         }
     }
     """
-
+    print(input_data)
     varfields_whitelist = [
       "260", "264", "008", "240", "130", "250", "245", "246"
     ]
