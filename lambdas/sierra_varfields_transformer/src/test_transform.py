@@ -8,7 +8,7 @@ def test_transform():
         },
         'maybeBibRecord': {
             'id': {'recordNumber': '129038'},
-            'data': {
+            'data': json.dumps({
                 'id': '129038',
                 'materialType': {
                     'code': 'a '
@@ -49,7 +49,7 @@ def test_transform():
                         'content': 'License to kill (should not show up in expected_data)'
                     }
                 ]
-            },
+            }),
             'modifiedDate': '2018-11-12T11:55:59Z'
         }
     }
