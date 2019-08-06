@@ -1,6 +1,7 @@
 import json
 from transform import transform
 
+
 def test_transform():
     vhs_data = {
         'sierraId': {
@@ -10,6 +11,7 @@ def test_transform():
             'id': {'recordNumber': '129038'},
             'data': json.dumps({
                 'id': '129038',
+                'deleted': False,
                 'materialType': {
                     'code': 'a '
                 },
@@ -60,6 +62,7 @@ def test_transform():
     expected_data = {
         'id': '129038',
         'material_type': 'a',
+        'deleted': False,
         'varfields': {
             '260': {
                 'label': 'London : Faber and Faber limited, [1938]',
@@ -74,4 +77,3 @@ def test_transform():
     }
 
     assert transform(vhs_data) == expected_data
-
