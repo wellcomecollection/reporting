@@ -1,8 +1,5 @@
 import json
 
-import certifi
-from wellcome_aws_utils.reporting_utils import get_es_credentials
-
 
 def flatten_varfield(varfield):
     content_label = varfield.get('content')
