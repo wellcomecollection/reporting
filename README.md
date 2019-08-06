@@ -5,12 +5,10 @@ The reporting cluster lets the Data and Preservation teams keep an eye on update
 This repo is divided into a set of python Lambdas which we use to make the source data a bit more palettable for ingestion and viewing in elasticsearch, and the terraform which keeps the whole thing running.
 
 ## Deployment
-The lambdas are tested and build via [GitHub Actions](.github/main.workflow). 
+The lambdas are tested and pushed to S3 as a new versions via [GitHub Actions](.github/main.workflow).
 
-Once tested, they get put into an S3 bucket as a new version. You will then need to run
+To deploy these, terraform reads the version from S3 and deploys it. You can do this from the [`terraform`](terraform) folder by running:
 
 ```HCL
 terraform apply
 ```
-
-for those versions to be deployed to AWS.
