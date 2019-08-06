@@ -34,17 +34,23 @@ def transform(input_data):
         }
     }
     """
+
     varfields_whitelist = [
-      "260", "264", "008", "240", "130", "250", "245", "246"
+        "260", "264", "008", "240", "130", "250", "245", "246"
     ]
     data_str = input_data['maybeBibRecord']['data']
     data = json.loads(data_str)
+
+    if data.get('deleted' == True):
+        return None
+
     flattened_varfields = {
         varfield['marcTag']: flatten_varfield(varfield)
         for varfield in data['varFields']
         if varfield.get("marcTag") and varfield["marcTag"] in varfields_whitelist
     }
-    material_type = data['materialType']['code'].strip()
+    material_type = data['materialType']['code'].strip(
+    ) if data.get('materialType') else None
     return {
         'id': data['id'],
         'material_type': material_type,

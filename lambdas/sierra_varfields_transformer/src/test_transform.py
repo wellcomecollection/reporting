@@ -1,6 +1,7 @@
 import json
 from transform import transform
 
+
 def test_transform():
     vhs_data = {
         'sierraId': {
@@ -75,3 +76,18 @@ def test_transform():
 
     assert transform(vhs_data) == expected_data
 
+
+def test_does_not_try_deleted_items():
+    vhs_data = {
+        "sierraId": {
+            "recordNumber": "1095239"
+        },
+        "maybeBibRecord": {
+            "id": {
+                "recordNumber": "1095239"
+            },
+            "data": "{\"id\":\"1095239\",\"deletedDate\":\"2012-07-27\",\"deleted\":true,\"orders\":[],\"locations\":[],\"fixedFields\":{},\"varFields\":[]}",
+            "modifiedDate": "2012-07-27T00:00:00Z"
+        },
+        "itemRecords": {}
+    }
