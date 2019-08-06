@@ -41,9 +41,6 @@ def transform(input_data):
     data_str = input_data['maybeBibRecord']['data']
     data = json.loads(data_str)
 
-    if data.get('deleted' == True):
-        return None
-
     flattened_varfields = {
         varfield['marcTag']: flatten_varfield(varfield)
         for varfield in data['varFields']
@@ -54,5 +51,6 @@ def transform(input_data):
     return {
         'id': data['id'],
         'material_type': material_type,
+        'deleted': bool(data.get('deleted')),
         'varfields': flattened_varfields
     }

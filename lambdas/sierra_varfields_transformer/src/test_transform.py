@@ -11,6 +11,7 @@ def test_transform():
             'id': {'recordNumber': '129038'},
             'data': json.dumps({
                 'id': '129038',
+                'deleted': False,
                 'materialType': {
                     'code': 'a '
                 },
@@ -61,6 +62,7 @@ def test_transform():
     expected_data = {
         'id': '129038',
         'material_type': 'a',
+        'deleted': False,
         'varfields': {
             '260': {
                 'label': 'London : Faber and Faber limited, [1938]',
@@ -75,19 +77,3 @@ def test_transform():
     }
 
     assert transform(vhs_data) == expected_data
-
-
-def test_does_not_try_deleted_items():
-    vhs_data = {
-        "sierraId": {
-            "recordNumber": "1095239"
-        },
-        "maybeBibRecord": {
-            "id": {
-                "recordNumber": "1095239"
-            },
-            "data": "{\"id\":\"1095239\",\"deletedDate\":\"2012-07-27\",\"deleted\":true,\"orders\":[],\"locations\":[],\"fixedFields\":{},\"varFields\":[]}",
-            "modifiedDate": "2012-07-27T00:00:00Z"
-        },
-        "itemRecords": {}
-    }
