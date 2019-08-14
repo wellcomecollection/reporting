@@ -21,6 +21,8 @@ resource "aws_lambda_function" "lambda_function" {
   dead_letter_config = {
     target_arn = "${aws_sqs_queue.lambda_dlq.arn}"
   }
+
+  reserved_concurrent_executions = 10
 }
 
 resource "aws_cloudwatch_metric_alarm" "lambda_alarm" {
