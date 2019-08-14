@@ -22,7 +22,7 @@ resource "aws_lambda_function" "lambda_function" {
     target_arn = "${aws_sqs_queue.lambda_dlq.arn}"
   }
 
-  reserved_concurrent_executions = 10
+  reserved_concurrent_executions = 5
 }
 
 resource "aws_cloudwatch_metric_alarm" "lambda_alarm" {
