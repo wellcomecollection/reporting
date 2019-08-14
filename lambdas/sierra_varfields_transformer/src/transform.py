@@ -33,7 +33,8 @@ def transform(input_data):
     """
 
     varfields_whitelist = [
-        "260", "264", "008", "240", "130", "250", "245", "246"
+        "260", "264", "008", "240", "130", "250", "245", "246",
+        "500", "501", "504", "518", "536", "545", "547", "562"
     ]
     data_str = input_data['maybeBibRecord']['data']
     data = json.loads(data_str)
