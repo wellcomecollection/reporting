@@ -11,7 +11,7 @@ resource "aws_lambda_function" "lambda_function" {
   s3_key            = "${var.s3_key}"
   s3_object_version = "${data.aws_s3_bucket_object.package.version_id}"
 
-  role    = "${aws_iam_role.iam_role.arn}"
+  role    = "${aws_iam_role.lambda_iam_role.arn}"
   handler = "${var.module_name == "" ? "${var.name}.main": "${var.module_name}.main"}"
   runtime = "python3.6"
   timeout = "${var.timeout}"
@@ -22,9 +22,7 @@ resource "aws_lambda_function" "lambda_function" {
     target_arn = "${aws_sqs_queue.lambda_dlq.arn}"
   }
 
-  environment {
-    variables = "${var.environment_variables}"
-  }
+  reserved_concurrent_executions = 5
 }
 
 resource "aws_cloudwatch_metric_alarm" "lambda_alarm" {
@@ -43,4 +41,8 @@ resource "aws_cloudwatch_metric_alarm" "lambda_alarm" {
 
   alarm_description = "This metric monitors lambda errors for function: ${var.name}"
   alarm_actions     = ["${var.alarm_topic_arn}"]
+}
+
+output "s3_object_version_id" {
+  value = "${data.aws_s3_bucket_object.package.version_id}"
 }

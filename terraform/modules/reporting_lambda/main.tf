@@ -5,8 +5,6 @@ module "reporting_lambda" {
   description = "${var.description}"
   timeout     = "${var.timeout}"
 
-  environment_variables = "${var.environment_variables}"
-
   alarm_topic_arn = "${data.terraform_remote_state.shared_infra.lambda_error_alarm_arn}"
 
   s3_bucket = "wellcomecollection-reporting-lambdas"
