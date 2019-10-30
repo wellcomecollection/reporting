@@ -6,7 +6,7 @@ data "template_file" "pgp_key" {
   template = "${file("${path.module}/wellcomedigitalplatform.key")}"
 }
 
-module "account" {
+ module "account" {
   source = "git::https://github.com/wellcometrust/terraform.git//iam/prebuilt/account?ref=v19.13.0"
 
   admin_principals          = ["${local.platform_account_arn}"]

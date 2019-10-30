@@ -2,7 +2,7 @@ terraform {
   required_version = ">= 0.11.12"
 
   backend "s3" {
-    role_arn = "arn:aws:iam::269807742353:role/developer"
+    role_arn = "arn:aws:iam::269807742353:role/reporting-developer"
 
     bucket         = "wellcomecollection-reporting-infra"
     key            = "terraform/reporting.tfstate"
@@ -15,7 +15,7 @@ data "terraform_remote_state" "shared_infra" {
   backend = "s3"
 
   config {
-    role_arn = "arn:aws:iam::760097843905:role/developer"
+    role_arn = "arn:aws:iam::760097843905:role/platform-developer"
 
     bucket = "wellcomecollection-platform-infra"
     key    = "terraform/shared_infra.tfstate"
@@ -27,10 +27,10 @@ data "terraform_remote_state" "infra_critical" {
   backend = "s3"
 
   config {
-    role_arn = "arn:aws:iam::760097843905:role/developer"
+    role_arn = "arn:aws:iam::760097843905:role/platform-developer"
 
     bucket = "wellcomecollection-platform-infra"
-    key    = "terraform/catalogue_pipeline_data.tfstate"
+    key    = "terraform/catalogue/infrastructure/critical.tfstate"
     region = "eu-west-1"
   }
 }
@@ -39,7 +39,7 @@ data "terraform_remote_state" "sierra_adapter" {
   backend = "s3"
 
   config {
-    role_arn = "arn:aws:iam::760097843905:role/developer"
+    role_arn = "arn:aws:iam::760097843905:role/platform-developer"
 
     bucket = "wellcomecollection-platform-infra"
     key    = "terraform/sierra_adapter.tfstate"
