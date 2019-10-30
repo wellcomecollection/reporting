@@ -53,6 +53,21 @@ module "lambda_sierra_varfields_transformer" {
   topic_count = 2
 }
 
+module "lambda_sierra_sourcedata_transformer" {
+  source      = "./reporting_lambda"
+  name        = "sierra_sourcedata_transformer"
+  description = "Send unmodified sierra source data to elastic"
+
+  vhs_read_policy = "${local.sierra_vhs_read_policy}"
+
+  topic_arns = [
+    "${local.sierra_reindex_topic_arn}",
+    "${local.sierra_updates_topic_arn}",
+  ]
+
+  topic_count = 2
+}
+
 output "miro_transformer_s3_object_version_id" {
   value = "${module.lambda_miro_transformer.s3_object_version_id}"
 }
