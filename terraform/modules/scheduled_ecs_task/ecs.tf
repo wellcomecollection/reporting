@@ -16,22 +16,18 @@ resource "aws_ecs_task_definition" "scheduled_task" {
 resource "aws_iam_role" "task_execution_role" {
   name = "${var.name}-task-execution-role"
 
-  assume_role_policy = "${file("${path.module}/policies/assume-role-policy.json")}"
-}
-
-data "template_file" "task_execution_role_policy" {
-  template = "${file("${path.module}/policies/ecs-execution-policy.json")}"
+  assume_role_policy = "${data.aws_iam_policy_document.assume_role_policy.json}"
 }
 
 resource "aws_iam_role_policy" "task_execution_role" {
   name   = "${var.name}-task-execution-policy"
   role   = "${aws_iam_role.task_execution_role.id}"
-  policy = "${data.template_file.task_execution_role_policy.rendered}"
+  policy = "${data.aws_iam_policy_document.task_execution_role_policy.json}"
 }
 
 ## ECS task role
 
 resource "aws_iam_role" "task_role" {
   name               = "${var.name}-task-role"
-  assume_role_policy = "${file("${path.module}/policies/assume-role-policy.json")}"
+  assume_role_policy = "${data.aws_iam_policy_document.assume_role_policy.json}"
 }
