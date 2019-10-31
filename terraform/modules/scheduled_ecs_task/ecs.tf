@@ -35,23 +35,3 @@ resource "aws_iam_role" "task_role" {
   name               = "${var.name}-task-role"
   assume_role_policy = "${file("${path.module}/policies/assume-role-policy.json")}"
 }
-
-
-# attach secretsmanager read policy to task role
-data "aws_iam_policy_document" "secrets_manager_es_details_read" {
-  statement {
-    actions   = ["secretsmanager:GetSecretValue"]
-    resources = ["${data.aws_secretsmanager_secret.es_details.arn}"]
-  }
-}
-
-resource "aws_iam_policy" "secrets_manager_es_details_read" {
-  name        = "ReadEsDetails-${var.name}"
-  description = "Read ES details"
-  policy      = "${data.aws_iam_policy_document.secrets_manager_es_details_read.json}"
-}
-
-resource "aws_iam_role_policy_attachment" "secrets_manager_es_details_read" {
-  role       = "${aws_iam_role.lambda_iam_role.id}"
-  policy_arn = "${aws_iam_policy.secrets_manager_es_details_read.arn}"
-}

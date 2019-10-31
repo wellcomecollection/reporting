@@ -1,6 +1,6 @@
 variable "name" {
   type        = "string"
-  description = "Unique name for resources"
+  description = "Name of the task"
 }
 
 variable "network_mode" {
@@ -27,7 +27,7 @@ variable "cluster_arn" {
 variable "task_count" {
   type        = "string"
   description = "Number of tasks to run"
-  default     = 1
+  default     = "1"
 }
 
 variable "cpu" {
