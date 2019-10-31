@@ -21,10 +21,10 @@ resource "aws_cloudwatch_event_target" "scheduled_task" {
 
 resource "aws_iam_role" "scheduled_task_cloudwatch_role" {
   name               = "${var.name}-scheduled-task-cloudwatch-role"
-  assume_role_policy = "${data.aws_iam_policy_document.cloudwatch_policy.json}"
+  assume_role_policy = "${data.aws_iam_policy_document.assume_role_policy.json}"
 }
 
 resource "aws_iam_role_policy_attachment" "scheduled_task_cloudwatch_role" {
   role       = "${aws_iam_role.task_execution_role.id}"
-  policy_arn = "${aws_iam_policy.task_execution_role.arn}"
+  policy_arn = "${aws_iam_policy.cloudwatch_policy.arn}"
 }

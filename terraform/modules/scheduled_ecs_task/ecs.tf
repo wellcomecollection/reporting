@@ -18,10 +18,9 @@ resource "aws_iam_role" "task_execution_role" {
   assume_role_policy = "${data.aws_iam_policy_document.assume_role_policy.json}"
 }
 
-
 resource "aws_iam_role_policy_attachment" "task_execution_role" {
   role       = "${aws_iam_role.task_execution_role.id}"
-  policy_arn = "${aws_iam_policy.task_execution_role.arn}"
+  policy_arn = "${aws_iam_policy.task_execution_policy.arn}"
 }
 
 ## ECS task role
@@ -36,8 +35,6 @@ data "aws_secretsmanager_secret" "es_details" {
   name = "prod/Elasticsearch/ReportingCredentials"
 }
 
-
-
 resource "aws_iam_role_policy_attachment" "secrets_manager_es_details_read" {
   role       = "${aws_iam_role.task_role.id}"
   policy_arn = "${aws_iam_policy.secrets_manager_es_details_read.arn}"
@@ -48,15 +45,12 @@ resource "aws_kms_key" "ecs_es_details" {
   description = "Encrypt / decrypt ES details"
 }
 
-resource "aws_kms_alias" "ecs_env_vars" {
-  name          = "alias/ecs/${var.name}_es_details"
-  target_key_id = "${aws_kms_key.ecs_es_details.key_id}"
-}
+# resource "aws_kms_alias" "ecs_env_vars" {
+#   name          = "alias/ecs/${var.name}_es_details"
+#   target_key_id = "${aws_kms_key.ecs_es_details.key_id}"
+# }
 
-
-
-
-resource "aws_iam_role_policy_attachment" "lambda_kinesis_kms_decrypt" {
+resource "aws_iam_role_policy_attachment" "task_role_kms_decrypt" {
   role       = "${aws_iam_role.task_role.id}"
   policy_arn = "${aws_iam_policy.kms_decrypt_env_vars.arn}"
 }

@@ -20,20 +20,22 @@ data "aws_iam_policy_document" "cloudwatch_policy" {
   }
 
   statement {
-    effect  = "Allow"
-    actions = ["iam:PassRole"]
+    effect    = "Allow"
+    actions   = ["iam:PassRole"]
+    resources = ["*"]
   }
 }
 
-resource "aws_iam_policy" "scheduled_task_cloudwatch_role" {
-  name   = "${var.name}-task-execution-policy"
-  policy = "${data.aws_iam_policy_document.task_execution_role.json}"
+resource "aws_iam_policy" "cloudwatch_policy" {
+  name   = "${var.name}-cloudwatch-policy"
+  policy = "${data.aws_iam_policy_document.cloudwatch_policy.json}"
 }
 
 # Execution role policy
-data "aws_iam_policy_document" "task_execution_role" {
+data "aws_iam_policy_document" "task_execution_policy" {
   statement {
-    effect = "Allow"
+    effect    = "Allow"
+    resources = ["*"]
 
     actions = [
       "ecr:GetAuthorizationToken",
@@ -43,14 +45,12 @@ data "aws_iam_policy_document" "task_execution_role" {
       "logs:CreateLogStream",
       "logs:PutLogEvents",
     ]
-
-    resources = ["*"]
   }
 }
 
-resource "aws_iam_policy" "task_execution_role" {
+resource "aws_iam_policy" "task_execution_policy" {
   name   = "${var.name}-task-execution-policy"
-  policy = "${data.aws_iam_policy_document.task_execution_role.json}"
+  policy = "${data.aws_iam_policy_document.task_execution_policy.json}"
 }
 
 # Read from secretsmanager
