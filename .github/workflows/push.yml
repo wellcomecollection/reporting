@@ -1,4 +1,7 @@
-on: push
+on:
+  push:
+    branches: 
+      - master
 name: Test and deploy lambdas
 jobs:
   build:
@@ -22,22 +25,6 @@ jobs:
       uses: ./actions/test_lambda/
       with:
         args: miro_inventory_transformer
-    - name: 'Master: sierra_varfields_transformer'
-      uses: actions/bin/filter@master
-      with:
-        args: branch master
-    - name: 'Master: sierra_transformer'
-      uses: actions/bin/filter@master
-      with:
-        args: branch master
-    - name: 'Master: miro_transformer'
-      uses: actions/bin/filter@master
-      with:
-        args: branch master
-    - name: 'Master: miro_inventory_transformer'
-      uses: actions/bin/filter@master
-      with:
-        args: branch master
     - name: 'Deploy: sierra_varfields_transformer'
       uses: ./actions/deploy_lambda/
       env:
