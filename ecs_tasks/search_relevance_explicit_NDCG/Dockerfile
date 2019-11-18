@@ -7,4 +7,4 @@ EXPOSE 80
 
 COPY ./src /src
 
-CMD ["python", "src/search_relevance_explicit_NDCG.py"]
+CMD ["python", "src/search_relevance_explicit_ndcg.py"]

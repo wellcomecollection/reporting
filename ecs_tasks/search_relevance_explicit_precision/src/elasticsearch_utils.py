@@ -11,7 +11,7 @@ today = datetime.today()
 yesterday = today - timedelta(days=1)
 
 
-def stringify(timestamp):
+def stringify_timestamp(timestamp):
     return str(timestamp).replace(' ', 'T')
 
 
@@ -53,8 +53,8 @@ def fetch_events(es_client, index, datetime_gte=yesterday, datetime_lt=today):
         index=index,
         doc_type='search',
         body={'query': {'range': {'timestamp': {
-            'gte': stringify(datetime_gte),
-            'lt': stringify(datetime_lt)
+            'gte': stringify_timestamp(datetime_gte),
+            'lt': stringify_timestamp(datetime_lt)
         }}}},
         size=100_000
     )

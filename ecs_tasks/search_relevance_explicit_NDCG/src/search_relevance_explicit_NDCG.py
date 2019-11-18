@@ -13,7 +13,7 @@ for group_id, event_group in split_events(all_events):
     transformed_data = transform_event_group(event_group)
     if transformed_data is not None:
         es_client.index(
-            index='search_relevance_explicit_NDCG',
+            index='search_relevance_explicit_ndcg',
             doc_type="_doc",
             id=group_id,
             body=transformed_data
