@@ -5,7 +5,7 @@ import requests
 
 from .aws import get_object_from_dynamo, get_object_from_s3, get_s3_client
 
-data_s3 = get_s3_client('data-developer')
+data_s3 = get_s3_client('data-dev')
 palette_ordered_ids = np.load(
     get_object_from_s3(data_s3, 'model-core-data', 'palette/image_ids.npy')
 )
