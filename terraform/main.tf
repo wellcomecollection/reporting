@@ -1,3 +1,18 @@
+module "lambda_miro_identifiers" {
+  source      = "./reporting_lambda"
+  name        = "miro_identifiers"
+  description = "Aggregate miro identifiers"
+
+  vhs_read_policy = "${local.miro_vhs_read_policy}"
+
+  topic_arns = [
+    "${local.miro_reindex_topic_arn}",
+    "${local.miro_updates_topic_arn}",
+  ]
+
+  topic_count = 2
+}
+
 module "lambda_miro_transformer" {
   source      = "./reporting_lambda"
   name        = "miro_transformer"
@@ -68,18 +83,3 @@ module "lambda_sierra_sourcedata_transformer" {
   topic_count = 2
 }
 
-output "miro_transformer_s3_object_version_id" {
-  value = "${module.lambda_miro_transformer.s3_object_version_id}"
-}
-
-output "miro_inventory_transformer_s3_object_version_id" {
-  value = "${module.lambda_miro_inventory_transformer.s3_object_version_id}"
-}
-
-output "sierra_transformer_s3_object_version_id" {
-  value = "${module.lambda_sierra_transformer.s3_object_version_id}"
-}
-
-output "sierra_varfields_s3_object_version_id" {
-  value = "${module.lambda_sierra_varfields_transformer.s3_object_version_id}"
-}
