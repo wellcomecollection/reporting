@@ -1,11 +1,13 @@
 import os
+
 from elasticsearch import Elasticsearch
+from wellcome_aws_utils.reporting_utils import get_es_credentials
 
 
 def get_es_client():
-    es_url = os.environ['ES_URL']
-    es_username = os.environ['ES_USERNAME']
-    es_password = os.environ['ES_PASSWORD']
-    return Elasticsearch(
-        es_url, http_auth=(es_username, es_password)
+    es_credentials = get_es_credentials(profile_name='reporting-dev')
+    es_client = Elasticsearch(
+        es_credentials['url'],
+        http_auth=(es_credentials['username'], es_credentials['password']),
     )
+    return es_client
