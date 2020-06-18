@@ -68,6 +68,21 @@ module "lambda_sierra_sourcedata_transformer" {
   topic_count = 2
 }
 
+module "calm_sourcedata_lambda" {
+  source      = "./reporting_lambda"
+  name        = "calm_sourcedata"
+  description = "Send unmodified calm source data to elastic"
+
+  vhs_read_policy = "${local.calm_vhs_read_policy}"
+
+  topic_arns = [
+    "${local.calm_reindex_topic_arn}",
+    "${local.calm_updates_topic_arn}",
+  ]
+
+  topic_count = 2
+}
+
 output "miro_transformer_s3_object_version_id" {
   value = "${module.lambda_miro_transformer.s3_object_version_id}"
 }
