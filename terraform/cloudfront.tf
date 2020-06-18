@@ -1,7 +1,7 @@
 data "aws_acm_certificate" "reporting_wc_org" {
   domain   = "reporting.wellcomecollection.org"
   statuses = ["ISSUED"]
-  provider = "aws.us_east_1"
+  provider = aws.us_east_1
 }
 
 resource "aws_s3_bucket" "cloudfront_logs" {
@@ -62,7 +62,7 @@ resource "aws_cloudfront_distribution" "reporting" {
   price_class = "PriceClass_100"
 
   viewer_certificate {
-    acm_certificate_arn      = "${data.aws_acm_certificate.reporting_wc_org.arn}"
+    acm_certificate_arn      = data.aws_acm_certificate.reporting_wc_org.arn
     minimum_protocol_version = "TLSv1"
     ssl_support_method       = "sni-only"
   }
@@ -75,6 +75,6 @@ resource "aws_cloudfront_distribution" "reporting" {
 
   logging_config {
     include_cookies = false
-    bucket          = "${aws_s3_bucket.cloudfront_logs.bucket_domain_name}"
+    bucket          = aws_s3_bucket.cloudfront_logs.bucket_domain_name
   }
 }

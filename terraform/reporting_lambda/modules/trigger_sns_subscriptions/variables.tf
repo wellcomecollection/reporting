@@ -7,6 +7,6 @@ variable "topic_count" {
 }
 
 variable "topic_arns" {
-  type        = "list"
+  type        = list
   description = "Topic arn for the SNS topic to subscribe the queue to"
 }
