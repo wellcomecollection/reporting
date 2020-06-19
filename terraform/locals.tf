@@ -8,7 +8,7 @@ locals {
   sierra_updates_topic_arn = data.terraform_remote_state.sierra_adapter.outputs.merged_bibs_topic_arn
 
   calm_reindex_topic_arn = data.terraform_remote_state.reindexer.outputs.calm_reindexer_topic_arn
-  calm_updates_topic_arn = data.terraform_remote_state.calm_adapter.outputs.calm_adapter_topic
+  calm_updates_topic_arn = data.terraform_remote_state.calm_adapter.outputs.calm_adapter_topic_arn
 
   infra_bucket = data.terraform_remote_state.shared_infra.outputs.infra_bucket
 

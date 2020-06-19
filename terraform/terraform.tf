@@ -66,7 +66,7 @@ data "terraform_remote_state" "reindexer" {
     role_arn = "arn:aws:iam::760097843905:role/platform-developer"
 
     bucket = "wellcomecollection-platform-infra"
-    key    = "terraform/reindexer.tfstate"
+    key    = "terraform/catalogue/reindexer.tfstate"
     region = "eu-west-1"
   }
 }
