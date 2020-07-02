@@ -6,7 +6,7 @@ variable "name" {}
 variable "description" {}
 
 variable "topic_arns" {
-  type        = "list"
+  type        = list
   description = "Topic arn for the SNS topic to subscribe the queue to"
 }
 
@@ -19,3 +19,8 @@ variable "log_retention_in_days" {
 }
 
 variable "vhs_read_policy" {}
+
+variable "assumable_read_role" {
+  type = string
+  default = ""
+}
