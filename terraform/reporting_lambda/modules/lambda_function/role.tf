@@ -67,3 +67,25 @@ resource "aws_iam_role_policy_attachment" "secrets_manager_es_details_read" {
   role       = aws_iam_role.lambda_iam_role.id
   policy_arn = aws_iam_policy.secrets_manager_es_details_read.arn
 }
+
+resource "aws_iam_policy" "assumable_read_policy" {
+  name        = "AssumeRead"
+  policy      = data.aws_iam_policy_document.assumable_read_role.json
+}
+
+resource "aws_iam_role_policy_attachment" "assumable_read_policy_attachment" {
+  role       = aws_iam_role.lambda_iam_role.id
+  policy_arn = aws_iam_policy.assumable_read_policy.arn
+}
+
+data "aws_iam_policy_document" "assumable_read_role" {
+  statement {
+    actions = [
+      "sts:AssumeRole"
+    ]
+
+    resources = [
+      var.assumable_read_role
+    ]
+  }
+}

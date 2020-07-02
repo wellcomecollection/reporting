@@ -19,4 +19,5 @@ locals {
   sierra_vhs_read_policy = data.terraform_remote_state.sierra_adapter.outputs.vhs_read_policy
 
   calm_vhs_read_policy = data.terraform_remote_state.calm_adapter.outputs.vhs_read_policy
+  calm_vhs_assumable_read_role = data.terraform_remote_state.calm_adapter.outputs.assumable_read_role
 }

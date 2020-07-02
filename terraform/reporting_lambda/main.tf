@@ -11,6 +11,12 @@ module "reporting_lambda" {
   s3_key    = "${var.name}.zip"
 
   log_retention_in_days = var.log_retention_in_days
+
+  assumable_read_role = var.assumable_read_role
+
+  environment_variables = {
+    assumable_read_role = var.assumable_read_role
+  }
 }
 
 module "reporting_lambda_trigger" {

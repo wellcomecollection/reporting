@@ -37,3 +37,10 @@ variable "log_retention_in_days" {
   description = "The number of days to keep CloudWatch logs"
   default     = ""
 }
+
+variable "assumable_read_role" {}
+
+variable "environment_variables" {
+  type = map
+  default = {}
+}

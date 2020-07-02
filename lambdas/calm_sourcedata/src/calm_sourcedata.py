@@ -1,3 +1,4 @@
+from os import environ
 import boto3
 
 from wellcome_aws_utils.reporting_utils import (get_es_credentials,
@@ -5,13 +6,14 @@ from wellcome_aws_utils.reporting_utils import (get_es_credentials,
 
 credentials = get_es_credentials()
 
+assumable_read_role = environ["assumable_read_role"]
+
 def main(event, _):
-    role_arn = "arn:aws:iam::760097843905:role/calm-adapter-assumable_read_role"
-    (dynamodb, s3) = get_dynamodb_and_s3(role_arn)
+    (dynamodb, s3) = get_dynamodb_and_s3(assumable_read_role)
     process_messages(
         event=event,
         transform=transform,
-        index='calm',
+        index='calm-2020',
         table_name='vhs-calm-adapter',
         dynamodb=dynamodb,
         s3_client=s3,

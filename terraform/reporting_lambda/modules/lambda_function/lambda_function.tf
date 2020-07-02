@@ -23,6 +23,10 @@ resource "aws_lambda_function" "lambda_function" {
   }
 
   reserved_concurrent_executions = 5
+
+  environment {
+    variables = var.environment_variables
+  }
 }
 
 resource "aws_cloudwatch_metric_alarm" "lambda_alarm" {

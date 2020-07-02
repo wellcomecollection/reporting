@@ -19,3 +19,8 @@ variable "log_retention_in_days" {
 }
 
 variable "vhs_read_policy" {}
+
+variable "assumable_read_role" {
+  type = string
+  default = ""
+}
