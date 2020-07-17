@@ -7,8 +7,8 @@ module "calm_sourcedata_lambda" {
   assumable_read_role = local.calm_vhs_assumable_read_role
 
   topic_arns = [
-    local.calm_reindex_topic_arn,
     local.calm_updates_topic_arn,
+    # local.calm_reindex_topic_arn,
   ]
 
   topic_count = 2
