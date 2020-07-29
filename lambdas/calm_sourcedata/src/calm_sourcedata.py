@@ -13,7 +13,7 @@ def main(event, _):
     process_messages(
         event=event,
         transform=transform,
-        index='calm-2020',
+        index='calm_catalog',
         table_name='vhs-calm-adapter',
         dynamodb=dynamodb,
         s3_client=s3,
