@@ -107,7 +107,7 @@ def compare(metrics, comparison_metrics, alpha=0.05):
             percentage = abs(int(100 * (1-(value / comparison))))
             message += (
                 f"*{formatted_key}:* {formatted_value}\n"
-                f"That's a {percentage}% {change_direction} from {window}\n"
+                f"That's a {percentage}% {change_direction} from {window}\n\n"
             )
 
         elif value * (1 + alpha) < comparison:
@@ -115,12 +115,12 @@ def compare(metrics, comparison_metrics, alpha=0.05):
             percentage = abs(int(100 * (1-(value / comparison))))
             message += (
                 f"*{formatted_key}:* {formatted_value}\n"
-                f"That's a {percentage}% {change_direction} from {window}"
+                f"That's a {percentage}% {change_direction} from {window}\n\n"
             )
         else:
             message += (
                 f"*{formatted_key}:* {formatted_value}\n"
-                f"That's a roughly the same as it was {window}"
+                f"That's a roughly the same as it was {window}\n\n"
             )
 
     return message

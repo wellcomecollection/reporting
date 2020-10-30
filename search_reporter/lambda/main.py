@@ -6,11 +6,11 @@ This lambda posts a daily update on key search metrics to wellcome's
 import json
 import os
 
-from metrics import MetricCalculator
-from date import get_time_windows
+from weco_datascience.logging import get_logger
 
 from slack import build_slack_payload, post_to_slack
-from weco_datascience.logging import get_logger
+from src.date import get_time_windows
+from src.metrics import MetricCalculator
 
 log = get_logger(__name__)
 

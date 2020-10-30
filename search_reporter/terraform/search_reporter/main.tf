@@ -1,5 +1,5 @@
 module "search_reporter" {
-  source = "../../modules/lambda"
+  source = "../lambda"
 
   name = "search_reporter-${var.deployment_service_env}"
 
