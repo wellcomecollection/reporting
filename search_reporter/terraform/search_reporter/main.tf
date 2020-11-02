@@ -1,7 +1,7 @@
 module "search_reporter" {
   source = "../lambda"
 
-  name = "search_reporter-${var.deployment_service_env}"
+  name = "search_reporter"
 
   s3_bucket = var.lambda_upload_bucket
   s3_key    = "lambdas/reporting/search_reporter.zip"

@@ -1,6 +1,6 @@
 resource "aws_cloudwatch_event_rule" "search_reporter_rule" {
-  name                = "search_reporter_rule-${var.deployment_service_env}"
-  description         = "Starts the search (${var.deployment_service_env}) lambda"
+  name                = "search_reporter_rule"
+  description         = "Starts the search reporter lambda"
   schedule_expression = "cron(0 9 * * ? *)"
 }
 
