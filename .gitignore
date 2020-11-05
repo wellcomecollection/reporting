@@ -162,3 +162,5 @@ override.tf.json
 python/
 .terraform/
 wellcomedigitalplatform.key
+
+node_modules/

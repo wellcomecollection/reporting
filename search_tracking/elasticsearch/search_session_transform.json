@@ -1,0 +1,56 @@
+{
+  "source": {
+    "index": "search_relevance_implicit"
+  },
+  "dest": {
+    "index": "search_relevance_implicit_sessions"
+  },
+  "pivot": {
+    "group_by": {
+      "anonId": {
+        "terms": {
+          "field": "anonymousId.keyword"
+        }
+      }
+    },
+    "aggregations": {
+      "events": {
+        "scripted_metric": {
+          "init_script": "state.last_doc = null; state.key = 1; state.events = []",
+          "map_script": """
+            if (state.last_doc == null) {
+              state.last_doc = new HashMap(params['_source']);
+            }
+            
+            ZonedDateTime curr_doc_ts =  doc['timestamp'].value;
+            ZonedDateTime last_doc_ts = ZonedDateTime.parse(state.last_doc.timestamp);
+            
+            def millis_between = ChronoUnit.MILLIS.between(last_doc_ts, curr_doc_ts);
+            
+            if (millis_between > 1800000) {
+              state.key = state.key + 1;
+            }
+            
+            String session_id = doc['anonymousId.keyword'].value + '__' + state.key;
+            def event = new HashMap(params['_source']);
+            event['sessionId'] = session_id;
+            state.events.add(event);
+            state.last_doc = new HashMap(params['_source']);
+          """,
+          "combine_script": """
+            return state.events;
+          """,
+          "reduce_script": """
+            def docs = [];
+            for (s in states) {
+              for (d in s) {
+                docs.add(d);
+              }
+            }
+            return docs;
+          """
+        }
+      }
+    }
+  }
+}
