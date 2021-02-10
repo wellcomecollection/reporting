@@ -53,7 +53,7 @@ ipaddress==1.0.23
     # via
     #   cryptography
     #   docker
-jinja2==2.10
+jinja2==2.10.1
     # via moto
 jmespath==0.9.3
     # via
