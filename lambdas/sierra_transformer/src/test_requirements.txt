@@ -83,7 +83,7 @@ pytz==2017.3
     # via moto
 pyyaml==5.1
     # via pyaml
-requests==2.18.4
+requests==2.20.0
     # via
     #   aws-xray-sdk
     #   docker
