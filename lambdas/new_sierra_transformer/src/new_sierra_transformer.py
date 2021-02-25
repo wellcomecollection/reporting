@@ -69,16 +69,29 @@ def create_requests_for(*, record_type, record, index_name):
 
     id = add_check_digit(record["id"], prefix=record_type[0])
 
+    # For the raw record, we index everything *except* the varFields
+    # and fixedFields -- these are variable size, and can cause us to
+    # blow the Elasticsearch document limits.
+    #
+    # These fields will be indexed separately.
+    print(f"Indexing data on {id}")
     indexed_data = {
         k: v for k, v in record.items() if k not in {"varFields", "fixedFields"}
     }
 
-    print(f"Indexing data on {id}")
     index_requests.append((index_name, id, indexed_data))
 
     varfields = record["varFields"]
     fixed_fields = record["fixedFields"]
 
+    # We index each varField separately.  Because varFields form an
+    # ordered list, we index them under the ID/position, e.g. b12879812-3
+    #
+    # The _delete_by_query afterwards deletes any varFields left over
+    # from a previous version of the record.
+    #
+    # We include some info about the parent record so you can find all
+    # the varFields on a particular record.
     print(f"Indexing varFields on {id}")
     for position, vf in enumerate(varfields):
         vf["_parent"] = {
@@ -105,6 +118,14 @@ def create_requests_for(*, record_type, record, index_name):
         )
     )
 
+    # We index each fixedFields separately.  Because fixedFields are
+    # ordered list, we index them under the ID/code, e.g. b12879812-34
+    #
+    # The _delete_by_query afterwards deletes any fixedFields left over
+    # from a previous version of the record.
+    #
+    # We include some info about the parent record so you can find all
+    # the fixedFields on a particular record.
     print(f"Indexing fixedFields on {id}")
     for code, ff in fixed_fields.items():
         ff["_code"] = code
