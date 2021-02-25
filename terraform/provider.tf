@@ -1,6 +1,5 @@
 provider "aws" {
-  version = "~> 2.9"
-  region  = "eu-west-1"
+  region = "eu-west-1"
 
   assume_role {
     role_arn = "arn:aws:iam::269807742353:role/reporting-developer"
@@ -14,8 +13,4 @@ provider "aws" {
   assume_role {
     role_arn = "arn:aws:iam::269807742353:role/reporting-developer"
   }
-}
-
-provider "template" {
-  version = "~> 2.1"
 }
