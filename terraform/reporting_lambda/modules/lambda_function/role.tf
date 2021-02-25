@@ -69,7 +69,7 @@ resource "aws_iam_role_policy_attachment" "secrets_manager_es_details_read" {
 }
 
 resource "aws_iam_policy" "assumable_read_policy" {
-  name        = "AssumeRead"
+  name        = "AssumeRead-${var.name}"
   policy      = data.aws_iam_policy_document.assumable_read_role.json
 }
 
@@ -88,4 +88,9 @@ data "aws_iam_policy_document" "assumable_read_role" {
       var.assumable_read_role
     ]
   }
+}
+
+resource "aws_iam_role_policy_attachment" "basic_execution_role" {
+  role       = aws_iam_role.lambda_iam_role.id
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 }

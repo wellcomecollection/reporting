@@ -13,3 +13,23 @@ module "calm_sourcedata_lambda" {
 
   topic_count = 2
 }
+
+module "sierra_lambda" {
+  source      = "./reporting_lambda"
+  name        = "new_sierra_transformer"
+  description = "Index Sierra source data in Elasticsearch"
+
+  vhs_read_policy     = local.sierra_vhs_read_policy
+  assumable_read_role = local.sierra_vhs_assumable_read_role
+
+  timeout = 5 * 60
+
+  topic_arns = [
+    local.sierra_reindex_topic_arn,
+    local.sierra_bibs_topic_arn,
+    local.sierra_items_topic_arn,
+    local.sierra_holdings_topic_arn,
+  ]
+
+  topic_count = 4
+}

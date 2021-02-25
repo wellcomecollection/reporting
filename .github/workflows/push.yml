@@ -1,19 +1,14 @@
 on:
   push:
-    branches: 
+    branches:
       - master
 name: Test and deploy lambdas
 jobs:
   build:
-    name: 'Test: sierra_varfields_transformer'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: 'Test: sierra_varfields_transformer'
-      uses: ./actions/test_lambda/
-      with:
-        args: sierra_varfields_transformer
-    - name: 'Test: sierra_transformer'
+    - name: 'Test: new_sierra_transformer'
       uses: ./actions/test_lambda/
       with:
         args: sierra_transformer
@@ -25,14 +20,7 @@ jobs:
       uses: ./actions/test_lambda/
       with:
         args: miro_inventory_transformer
-    - name: 'Deploy: sierra_varfields_transformer'
-      uses: ./actions/deploy_lambda/
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      with:
-        args: sierra_varfields_transformer
-    - name: 'Deploy: sierra_transformer'
+    - name: 'Deploy: new_sierra_transformer'
       uses: ./actions/deploy_lambda/
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
