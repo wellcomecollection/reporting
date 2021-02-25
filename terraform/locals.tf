@@ -18,7 +18,8 @@ locals {
 
   miro_inventory_vhs_read_policy = data.terraform_remote_state.infra_critical.outputs.vhs_miro_inventory_read_policy
 
-  sierra_vhs_read_policy = data.terraform_remote_state.sierra_adapter.outputs.vhs_read_policy
+  sierra_vhs_read_policy         = data.terraform_remote_state.sierra_adapter.outputs.vhs_read_policy
+  sierra_vhs_assumable_read_role = data.terraform_remote_state.sierra_adapter.outputs.vhs_assumable_read_role
 
   calm_vhs_read_policy = data.terraform_remote_state.calm_adapter.outputs.vhs_read_policy
   calm_vhs_assumable_read_role = data.terraform_remote_state.calm_adapter.outputs.assumable_read_role

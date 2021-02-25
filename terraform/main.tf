@@ -20,7 +20,9 @@ module "sierra_lambda" {
   description = "Index Sierra source data in Elasticsearch"
 
   vhs_read_policy     = local.sierra_vhs_read_policy
-  assumable_read_role = local.calm_vhs_assumable_read_role
+  assumable_read_role = local.sierra_vhs_assumable_read_role
+
+  timeout = 5 * 60
 
   topic_arns = [
     local.sierra_reindex_topic_arn,
