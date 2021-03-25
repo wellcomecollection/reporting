@@ -77,7 +77,7 @@ python-dateutil==2.6.1
     #   moto
 pytz==2017.3
     # via moto
-pyyaml==5.1
+pyyaml==5.4
     # via pyaml
 requests==2.20.0
     # via
