@@ -1,0 +1,15 @@
+{
+  "name": "@weco/search-logger-kinesis-to-es-lambda",
+  "description": "Copy items from a AWS Kinesis stream to out Elastic cluster",
+  "license": "MIT",
+  "scripts": {
+    "build": "yarn install --production && zip -r search_logger_kinesis_to_es_lambda.zip node_modules index.js",
+    "deploy": "yarn build && yarn install && node ./copy-to-s3"
+  },
+  "dependencies": {
+    "@elastic/elasticsearch": "^7.4.0"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.799.0"
+  }
+}
