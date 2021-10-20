@@ -1,11 +1,11 @@
-const { conversion } = require("../__mocks__/conversion");
-const { parseConversion } = require("../index");
+const { conversion } = require('../__mocks__/conversion')
+const { parseConversion } = require('../index')
 
-it("replaces `.` in query field names with `_`", () => {
-  const c = parseConversion(conversion);
+it('replaces `.` in query field names with `_`', () => {
+  const c = parseConversion(conversion)
   expect(c[1].page.query).toEqual({
-    workType: ["a", "b"],
+    workType: ['a', 'b'],
     page: 23,
-    production_dates_from: "1980",
-  });
-});
+    production_dates_from: '1980'
+  })
+})
