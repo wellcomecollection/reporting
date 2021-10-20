@@ -40,7 +40,7 @@ async function main() {
   // create data stream
   await client.indices.createDataStream({
     name: indexTemplate.indexPatternName
-  })
+  }).catch(err => { console.error(err.meta.body); throw err; })
 }
 
 main()
