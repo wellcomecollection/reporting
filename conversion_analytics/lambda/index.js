@@ -20,14 +20,12 @@ const secretsManager = new AWS.SecretsManager({
 })
 
 async function processEvent (event, context, callback) {
-  const body = event.Records.map(function (record) {
+  const conversions = event.Records.map(function (record) {
     const payload = new Buffer(record.kinesis.data, 'base64').toString('utf-8')
     try {
       const json = JSON.parse(payload)
       if (json.event === 'conversion') {
         return parseConversion(json)
-      } else {
-        return parseSearch(json)
       }
     } catch (e) {
       console.error(e, payload)
@@ -39,14 +37,14 @@ async function processEvent (event, context, callback) {
     }, [])
 
   // Get only uniques
-  const services = body
+  const services = conversions
     .map((b) => b.index && b.index._index)
     .filter(Boolean)
     .filter((service, i, arr) => arr.indexOf(service) === i)
     .join(', ')
 
-  if (body.length > 0) {
-    const { body: bulkResponse } = await esClient.bulk({ body: body })
+  if (conversions.length > 0) {
+    const { body: bulkResponse } = await esClient.bulk({ body: conversions })
     if (bulkResponse.errors) {
       console.log(
         'Error sending bulk to Elastic: ',
@@ -54,7 +52,7 @@ async function processEvent (event, context, callback) {
       )
     } else {
       console.log(
-        `Success on services: ${services} with ${body.length / 2} records`
+        `Success on services: ${services} with ${conversions.length / 2} records`
       )
     }
   }
@@ -98,54 +96,15 @@ function parseConversion (segmentEvent) {
         _id: messageId
       }
     },
+    esDoc,
+    {
+      create: {
+        _index: 'metrics-conversion-prod',
+        _id: messageId
+      }
+    },
     esDoc
   ]
-}
-
-function parseSearch (json) {
-  const validServices = [
-    'search_relevance_implicit',
-    'search_relevance_explicit'
-  ]
-  const network =
-    json.context.ip === '195.143.129.132'
-      ? 'StaffCorporateDevices'
-      : json.context.ip === '195.143.129.232'
-        ? 'Wellcome-WiFi'
-        : null
-
-  // If we don't have a service, skip over it
-  const service = json.properties.service
-  const validService = validServices.indexOf(service) !== -1
-
-  const esDoc = {
-    event: json.event,
-    anonymousId: json.anonymousId,
-    timestamp: json.timestamp,
-    network,
-    toggles: json.properties.toggles,
-    query: json.properties.query,
-    data: json.properties.data
-  }
-
-  if (validService) {
-    console.info(`Creating record for valid service: ${service}`)
-    return [
-      {
-        index: {
-          _index: service,
-          _id: json.messageId
-        }
-      },
-      esDoc
-    ]
-  } else {
-    console.error(
-      `Error: Not creating record for invalid service: ${service}`,
-      json
-    )
-    return []
-  }
 }
 
 module.exports.parseConversion = parseConversion
