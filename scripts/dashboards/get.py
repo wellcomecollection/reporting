@@ -15,8 +15,6 @@ export_response = (
 )
 
 saved_objects = export_response.split("\n")
-print(f"Found {len(saved_objects)} saved objects")
-
 for object in saved_objects:
     parsed_object = json.loads(object)
     try:

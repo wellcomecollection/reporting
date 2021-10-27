@@ -12,3 +12,14 @@ services:
         source: ~/.aws
         target: /root/.aws
         read_only: true
+  update_dashboards:
+    build: dashboards
+    command: python update.py
+    volumes:
+      - type: bind
+        source: ./dashboards/data/
+        target: /data
+      - type: bind
+        source: ~/.aws
+        target: /root/.aws
+        read_only: true
