@@ -171,3 +171,4 @@ node_modules
 **/data/**/*
 !.gitkeep
 .vscode
+!scripts/dashboards/data/*

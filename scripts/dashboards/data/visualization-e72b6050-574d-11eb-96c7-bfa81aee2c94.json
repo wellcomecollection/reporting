@@ -1,0 +1,21 @@
+{
+    "attributes": {
+        "description": "used in conversion dashboard",
+        "kibanaSavedObjectMeta": {
+            "searchSourceJSON": "{\"query\":{\"query\":\"\",\"language\":\"kuery\"},\"filter\":[]}"
+        },
+        "title": "Percentage total item views/total searches (metric)",
+        "uiStateJSON": "{}",
+        "version": 1,
+        "visState": "{\"title\":\"Percentage total item views/total searches (metric)\",\"type\":\"metrics\",\"aggs\":[],\"params\":{\"id\":\"61ca57f0-469d-11e7-af02-69e470af7417\",\"type\":\"metric\",\"series\":[{\"id\":\"61ca57f1-469d-11e7-af02-69e470af7417\",\"color\":\"#68BC00\",\"split_mode\":\"filter\",\"split_color_mode\":\"kibana\",\"metrics\":[{\"id\":\"61ca57f2-469d-11e7-af02-69e470af7417\",\"type\":\"filter_ratio\",\"percentiles\":[{\"id\":\"7ed049d0-574d-11eb-9ad5-7353e223f241\",\"mode\":\"line\",\"shade\":0.2,\"value\":50}],\"numerator\":{\"query\":\"(page.name:item or page.name:image)\\nand\\nNOT (source:viewer/paginator)\",\"language\":\"kuery\"},\"denominator\":{\"query\":\"(page.name:images or page.name:works)\\nand\\npage.query.query:*\\nand\\nproperties.totalResults:*\\nand\\n(page.query.page:1 OR NOT page.query.page:*)\",\"language\":\"kuery\"}}],\"separate_axis\":0,\"axis_position\":\"right\",\"formatter\":\"%0.0\",\"chart_type\":\"line\",\"line_width\":1,\"point_size\":1,\"fill\":0.5,\"stacked\":\"none\",\"label\":\" \",\"filter\":{\"query\":\"NOT network.keyword:\\\"StaffCorporateDevices\\\"\",\"language\":\"kuery\"}}],\"time_field\":\"@timestamp\",\"index_pattern\":\"conversion*\",\"interval\":\"\",\"axis_position\":\"left\",\"axis_formatter\":\"number\",\"axis_scale\":\"normal\",\"show_legend\":1,\"show_grid\":1,\"tooltip_mode\":\"show_all\",\"isModelInvalid\":false,\"background_color_rules\":[{\"id\":\"60f0e370-574d-11eb-9ad5-7353e223f241\"}],\"time_range_mode\":\"entire_time_range\",\"use_kibana_indexes\":false,\"hide_last_value_indicator\":true}}"
+    },
+    "coreMigrationVersion": "7.14.0",
+    "id": "e72b6050-574d-11eb-96c7-bfa81aee2c94",
+    "migrationVersion": {
+        "visualization": "7.14.0"
+    },
+    "references": [],
+    "type": "visualization",
+    "updated_at": "2021-05-26T08:57:12.939Z",
+    "version": "WzM4NzIsMl0="
+}

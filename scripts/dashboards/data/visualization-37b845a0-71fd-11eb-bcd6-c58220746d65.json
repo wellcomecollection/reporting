@@ -1,0 +1,32 @@
+{
+    "attributes": {
+        "description": "Filter for location, workType, API",
+        "kibanaSavedObjectMeta": {
+            "searchSourceJSON": "{\"query\":{\"query\":\"\",\"language\":\"kuery\"},\"filter\":[]}"
+        },
+        "title": "Conversion* dashboard controls",
+        "uiStateJSON": "{}",
+        "version": 1,
+        "visState": "{\"title\":\"Conversion* dashboard controls\",\"type\":\"input_control_vis\",\"aggs\":[],\"params\":{\"controls\":[{\"id\":\"1603884686732\",\"fieldName\":\"page.name\",\"parent\":\"\",\"label\":\"Type of search: works/images\",\"type\":\"list\",\"options\":{\"type\":\"terms\",\"multiselect\":false,\"dynamicOptions\":true,\"size\":5,\"order\":\"desc\"},\"indexPatternRefName\":\"control_0_index_pattern\"},{\"id\":\"1615196333176\",\"fieldName\":\"page.query.availabilities.keyword\",\"parent\":\"\",\"label\":\"Location\",\"type\":\"list\",\"options\":{\"type\":\"terms\",\"multiselect\":true,\"dynamicOptions\":true,\"size\":5,\"order\":\"desc\"},\"indexPatternRefName\":\"control_1_index_pattern\"}],\"updateFiltersOnChange\":true,\"useTimeFilter\":true,\"pinFilters\":false}}"
+    },
+    "coreMigrationVersion": "7.14.0",
+    "id": "37b845a0-71fd-11eb-bcd6-c58220746d65",
+    "migrationVersion": {
+        "visualization": "7.14.0"
+    },
+    "references": [
+        {
+            "id": "217cebc0-334f-11eb-96c7-bfa81aee2c94",
+            "name": "control_0_index_pattern",
+            "type": "index-pattern"
+        },
+        {
+            "id": "217cebc0-334f-11eb-96c7-bfa81aee2c94",
+            "name": "control_1_index_pattern",
+            "type": "index-pattern"
+        }
+    ],
+    "type": "visualization",
+    "updated_at": "2021-03-12T16:11:18.548Z",
+    "version": "WzM1MzEsMl0="
+}

@@ -1,0 +1,68 @@
+{
+    "attributes": {
+        "description": "",
+        "hits": 0,
+        "kibanaSavedObjectMeta": {
+            "searchSourceJSON": "{\n  \"query\": {\n    \"language\": \"kuery\",\n    \"query\": \"\"\n  },\n  \"filter\": []\n}"
+        },
+        "optionsJSON": "{\n  \"hidePanelTitles\": false,\n  \"useMargins\": true\n}",
+        "panelsJSON": "[\n  {\n    \"version\": \"7.10.2\",\n    \"gridData\": {\n      \"x\": 0,\n      \"y\": 0,\n      \"w\": 10,\n      \"h\": 12,\n      \"i\": \"c2cacfbd-3f6d-40bb-93b0-35b26c8d49a0\"\n    },\n    \"panelIndex\": \"c2cacfbd-3f6d-40bb-93b0-35b26c8d49a0\",\n    \"embeddableConfig\": {\n      \"enhancements\": {}\n    },\n    \"panelRefName\": \"panel_0\"\n  },\n  {\n    \"version\": \"7.10.2\",\n    \"gridData\": {\n      \"x\": 10,\n      \"y\": 0,\n      \"w\": 32,\n      \"h\": 12,\n      \"i\": \"dbfd0a97-2a5c-48b3-b9f1-1e1ccd62a9e9\"\n    },\n    \"panelIndex\": \"dbfd0a97-2a5c-48b3-b9f1-1e1ccd62a9e9\",\n    \"embeddableConfig\": {\n      \"enhancements\": {}\n    },\n    \"panelRefName\": \"panel_1\"\n  },\n  {\n    \"version\": \"7.10.2\",\n    \"gridData\": {\n      \"x\": 0,\n      \"y\": 12,\n      \"w\": 10,\n      \"h\": 6,\n      \"i\": \"c778566b-cd93-495c-9736-8b9051c41da1\"\n    },\n    \"panelIndex\": \"c778566b-cd93-495c-9736-8b9051c41da1\",\n    \"embeddableConfig\": {\n      \"enhancements\": {}\n    },\n    \"panelRefName\": \"panel_2\"\n  },\n  {\n    \"version\": \"7.10.2\",\n    \"gridData\": {\n      \"x\": 10,\n      \"y\": 12,\n      \"w\": 32,\n      \"h\": 6,\n      \"i\": \"e2be62ab-3bef-4679-b69e-6b1c34d24eaa\"\n    },\n    \"panelIndex\": \"e2be62ab-3bef-4679-b69e-6b1c34d24eaa\",\n    \"embeddableConfig\": {\n      \"enhancements\": {}\n    },\n    \"panelRefName\": \"panel_3\"\n  },\n  {\n    \"version\": \"7.10.2\",\n    \"gridData\": {\n      \"x\": 0,\n      \"y\": 18,\n      \"w\": 10,\n      \"h\": 6,\n      \"i\": \"0b707531-7eb2-4f16-b4c4-667c717ae0fb\"\n    },\n    \"panelIndex\": \"0b707531-7eb2-4f16-b4c4-667c717ae0fb\",\n    \"embeddableConfig\": {\n      \"enhancements\": {}\n    },\n    \"panelRefName\": \"panel_4\"\n  },\n  {\n    \"version\": \"7.10.2\",\n    \"gridData\": {\n      \"x\": 10,\n      \"y\": 18,\n      \"w\": 32,\n      \"h\": 6,\n      \"i\": \"55d22811-9a52-49e4-a016-b06075066c0e\"\n    },\n    \"panelIndex\": \"55d22811-9a52-49e4-a016-b06075066c0e\",\n    \"embeddableConfig\": {\n      \"enhancements\": {}\n    },\n    \"panelRefName\": \"panel_5\"\n  },\n  {\n    \"version\": \"7.10.2\",\n    \"gridData\": {\n      \"x\": 0,\n      \"y\": 24,\n      \"w\": 10,\n      \"h\": 6,\n      \"i\": \"1b22fc7f-cfab-4537-8b69-0056d428289a\"\n    },\n    \"panelIndex\": \"1b22fc7f-cfab-4537-8b69-0056d428289a\",\n    \"embeddableConfig\": {\n      \"enhancements\": {}\n    },\n    \"panelRefName\": \"panel_6\"\n  },\n  {\n    \"version\": \"7.10.2\",\n    \"gridData\": {\n      \"x\": 10,\n      \"y\": 24,\n      \"w\": 32,\n      \"h\": 6,\n      \"i\": \"658d3d34-6685-4b71-aada-133c8ebc19f3\"\n    },\n    \"panelIndex\": \"658d3d34-6685-4b71-aada-133c8ebc19f3\",\n    \"embeddableConfig\": {\n      \"enhancements\": {}\n    },\n    \"panelRefName\": \"panel_7\"\n  }\n]",
+        "timeRestore": false,
+        "title": "Conversion dashboard (archive focus)",
+        "version": 1
+    },
+    "coreMigrationVersion": "7.14.0",
+    "id": "89b95fe0-6174-11eb-81f0-cfa2d1964087",
+    "migrationVersion": {
+        "dashboard": "7.14.0"
+    },
+    "references": [
+        {
+            "id": "3cc14bd0-6179-11eb-81f0-cfa2d1964087",
+            "name": "panel_0",
+            "type": "visualization"
+        },
+        {
+            "id": "7e4fd3f0-6179-11eb-81f0-cfa2d1964087",
+            "name": "panel_1",
+            "type": "visualization"
+        },
+        {
+            "id": "2b5d2a10-6225-11eb-81f0-cfa2d1964087",
+            "name": "panel_2",
+            "type": "visualization"
+        },
+        {
+            "id": "660a38b0-6225-11eb-81f0-cfa2d1964087",
+            "name": "panel_3",
+            "type": "visualization"
+        },
+        {
+            "id": "19033f40-6224-11eb-81f0-cfa2d1964087",
+            "name": "panel_4",
+            "type": "visualization"
+        },
+        {
+            "id": "e07830d0-6224-11eb-81f0-cfa2d1964087",
+            "name": "panel_5",
+            "type": "visualization"
+        },
+        {
+            "id": "9763bd20-5684-11eb-96c7-bfa81aee2c94",
+            "name": "panel_6",
+            "type": "visualization"
+        },
+        {
+            "id": "0a2e55e0-5685-11eb-96c7-bfa81aee2c94",
+            "name": "panel_7",
+            "type": "visualization"
+        }
+    ],
+    "sort": [
+        1635254791668,
+        3501
+    ],
+    "type": "dashboard",
+    "updated_at": "2021-10-26T13:26:31.668Z",
+    "version": "WzI1NjIxLDNd"
+}

@@ -1,0 +1,160 @@
+{
+    "attributes": {
+        "description": "",
+        "state": {
+            "datasourceStates": {
+                "indexpattern": {
+                    "layers": {
+                        "546cc288-8ec3-4e19-917a-ffc3630be053": {
+                            "columnOrder": [
+                                "721403b4-7328-4b78-af6e-14f58c864753",
+                                "14810c67-ab79-4c07-ba91-91d5f3032575"
+                            ],
+                            "columns": {
+                                "14810c67-ab79-4c07-ba91-91d5f3032575": {
+                                    "dataType": "number",
+                                    "isBucketed": false,
+                                    "label": "Count of records",
+                                    "operationType": "count",
+                                    "scale": "ratio",
+                                    "sourceField": "Records"
+                                },
+                                "721403b4-7328-4b78-af6e-14f58c864753": {
+                                    "dataType": "string",
+                                    "isBucketed": true,
+                                    "label": "Filters",
+                                    "operationType": "filters",
+                                    "params": {
+                                        "filters": [
+                                            {
+                                                "input": {
+                                                    "language": "kuery",
+                                                    "query": "page.name:works AND page.query.workType.keyword : *"
+                                                },
+                                                "label": "Format"
+                                            },
+                                            {
+                                                "input": {
+                                                    "language": "kuery",
+                                                    "query": "page.name:works AND page.name:works AND page.query.production_dates_from.keyword : *"
+                                                },
+                                                "label": "From"
+                                            },
+                                            {
+                                                "input": {
+                                                    "language": "kuery",
+                                                    "query": "page.name:works AND page.query.production_dates_to.keyword : *"
+                                                },
+                                                "label": "To"
+                                            },
+                                            {
+                                                "input": {
+                                                    "language": "kuery",
+                                                    "query": "page.name:works AND page.query.availabilities.keyword : * "
+                                                },
+                                                "label": "Availabilities"
+                                            },
+                                            {
+                                                "input": {
+                                                    "language": "kuery",
+                                                    "query": "page.name:works AND page.query.contributors_agent_label.keyword : *"
+                                                },
+                                                "label": "Contributors"
+                                            },
+                                            {
+                                                "input": {
+                                                    "language": "kuery",
+                                                    "query": "page.name:works AND page.query.subjects_label.keyword : *"
+                                                },
+                                                "label": "Subjects"
+                                            },
+                                            {
+                                                "input": {
+                                                    "language": "kuery",
+                                                    "query": "page.name:works AND page.query.genres_label.keyword : *"
+                                                },
+                                                "label": "Genres"
+                                            },
+                                            {
+                                                "input": {
+                                                    "language": "kuery",
+                                                    "query": "page.name:works AND page.query.languages.keyword : *"
+                                                },
+                                                "label": "Languages"
+                                            }
+                                        ]
+                                    },
+                                    "scale": "ordinal"
+                                }
+                            },
+                            "incompleteColumns": {}
+                        }
+                    }
+                }
+            },
+            "filters": [],
+            "query": {
+                "language": "kuery",
+                "query": ""
+            },
+            "visualization": {
+                "axisTitlesVisibilitySettings": {
+                    "x": true,
+                    "yLeft": true,
+                    "yRight": true
+                },
+                "fittingFunction": "None",
+                "gridlinesVisibilitySettings": {
+                    "x": true,
+                    "yLeft": true,
+                    "yRight": true
+                },
+                "layers": [
+                    {
+                        "accessors": [
+                            "14810c67-ab79-4c07-ba91-91d5f3032575"
+                        ],
+                        "layerId": "546cc288-8ec3-4e19-917a-ffc3630be053",
+                        "position": "top",
+                        "seriesType": "bar_stacked",
+                        "showGridlines": false,
+                        "xAccessor": "721403b4-7328-4b78-af6e-14f58c864753"
+                    }
+                ],
+                "legend": {
+                    "isVisible": true,
+                    "position": "right"
+                },
+                "preferredSeriesType": "bar_stacked",
+                "tickLabelsVisibilitySettings": {
+                    "x": true,
+                    "yLeft": true,
+                    "yRight": true
+                },
+                "valueLabels": "hide"
+            }
+        },
+        "title": "Works: filter usage",
+        "visualizationType": "lnsXY"
+    },
+    "coreMigrationVersion": "7.14.0",
+    "id": "2db8fbd0-7c39-11eb-bcd6-c58220746d65",
+    "migrationVersion": {
+        "lens": "7.14.0"
+    },
+    "references": [
+        {
+            "id": "217cebc0-334f-11eb-96c7-bfa81aee2c94",
+            "name": "indexpattern-datasource-current-indexpattern",
+            "type": "index-pattern"
+        },
+        {
+            "id": "217cebc0-334f-11eb-96c7-bfa81aee2c94",
+            "name": "indexpattern-datasource-layer-546cc288-8ec3-4e19-917a-ffc3630be053",
+            "type": "index-pattern"
+        }
+    ],
+    "type": "lens",
+    "updated_at": "2021-03-16T15:45:06.013Z",
+    "version": "WzM1MzIsMl0="
+}
