@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  get_dashboards:
+    build: dashboards
+    command: python get.py
+    volumes:
+      - type: bind
+        source: ./dashboards/data/
+        target: /data
+      - type: bind
+        source: ~/.aws
+        target: /root/.aws
+        read_only: true
