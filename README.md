@@ -1,20 +1,3 @@
-# :bar_chart: Reporting
+# 📊 Reporting
 
-The reporting project is setup to help us understand, analyse, and report on the different parts of the
-catalogue.
-
-This includes (non-exhaustive):
-- Data sources feeding the cataogue API
-- How the API is used
-- Feedback on the API
-
-On average the reporting pipeline looks like:
-
-    data source => messaging service (SQS / Kinesis) => lambda => Elasticsearch index
-
-The different pipelines can be found in [`./lambdas`](./lambdas), where each pipeline
-_should_ have a README.
-
-
-## Deployment
-The lambdas are tested and pushed to S3 as a new versions via [GitHub Actions](.github/workflows/).
+The reporting cluster helps us understand, analyse, and report on different parts of the catalogue and how they're used.
