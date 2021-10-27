@@ -4,12 +4,14 @@
   "license": "MIT",
   "scripts": {
     "build": "yarn install --production && zip -r search_logger_kinesis_to_es_lambda.zip node_modules index.js",
-    "deploy": "yarn build && yarn install && node ./copy-to-s3"
+    "deploy": "yarn build && node ./copy-to-s3",
+    "test": "jest"
   },
   "dependencies": {
     "@elastic/elasticsearch": "^7.4.0"
   },
   "devDependencies": {
-    "aws-sdk": "^2.799.0"
+    "aws-sdk": "^2.799.0",
+    "jest": "^27.3.1"
   }
 }
