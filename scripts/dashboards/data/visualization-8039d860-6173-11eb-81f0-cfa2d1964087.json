@@ -1,0 +1,21 @@
+{
+    "attributes": {
+        "description": "used in conversion dashboard",
+        "kibanaSavedObjectMeta": {
+            "searchSourceJSON": "{\"query\":{\"query\":\"\",\"language\":\"kuery\"},\"filter\":[]}"
+        },
+        "title": "Works page views/search by session.id (metric)",
+        "uiStateJSON": "{}",
+        "version": 1,
+        "visState": "{\"title\":\"Works page views/search by session.id (metric)\",\"type\":\"metrics\",\"aggs\":[],\"params\":{\"id\":\"61ca57f0-469d-11e7-af02-69e470af7417\",\"type\":\"metric\",\"series\":[{\"id\":\"61ca57f1-469d-11e7-af02-69e470af7417\",\"color\":\"#68BC00\",\"split_mode\":\"filter\",\"split_color_mode\":\"kibana\",\"metrics\":[{\"id\":\"61ca57f2-469d-11e7-af02-69e470af7417\",\"type\":\"filter_ratio\",\"numerator\":{\"query\":\"page.name:work\\nand\\npage.query.id:*\",\"language\":\"kuery\"},\"denominator\":{\"query\":\"(page.name:images or page.name:works)\\nand\\npage.query.query:*\\nand\\nproperties.totalResults:*\\nand\\n(page.query.page:1 OR NOT page.query.page:*)\",\"language\":\"kuery\"},\"metric_agg\":\"cardinality\",\"field\":\"session.id\"}],\"separate_axis\":0,\"axis_position\":\"right\",\"formatter\":\"0.00\",\"chart_type\":\"line\",\"line_width\":1,\"point_size\":1,\"fill\":0.5,\"stacked\":\"none\",\"label\":\" \",\"filter\":{\"query\":\"NOT network.keyword : \\\"StaffCorporateDevices\\\" \",\"language\":\"kuery\"}}],\"time_field\":\"\",\"index_pattern\":\"conversion*\",\"interval\":\"\",\"axis_position\":\"left\",\"axis_formatter\":\"number\",\"axis_scale\":\"normal\",\"show_legend\":1,\"show_grid\":1,\"tooltip_mode\":\"show_all\",\"isModelInvalid\":false,\"background_color_rules\":[{\"id\":\"4ef59430-4123-11eb-a4df-01b85f2124cb\"}],\"time_range_mode\":\"entire_time_range\",\"use_kibana_indexes\":false,\"hide_last_value_indicator\":true}}"
+    },
+    "coreMigrationVersion": "7.14.0",
+    "id": "8039d860-6173-11eb-81f0-cfa2d1964087",
+    "migrationVersion": {
+        "visualization": "7.14.0"
+    },
+    "references": [],
+    "type": "visualization",
+    "updated_at": "2021-01-28T14:17:16.746Z",
+    "version": "WzMzNTgsMl0="
+}

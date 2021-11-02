@@ -1,0 +1,21 @@
+{
+    "attributes": {
+        "description": "",
+        "kibanaSavedObjectMeta": {
+            "searchSourceJSON": "{\"query\":{\"query\":\"\",\"language\":\"kuery\"},\"filter\":[]}"
+        },
+        "title": "total archive works page views",
+        "uiStateJSON": "{}",
+        "version": 1,
+        "visState": "{\"title\":\"total archive works page views\",\"type\":\"metrics\",\"aggs\":[],\"params\":{\"id\":\"61ca57f0-469d-11e7-af02-69e470af7417\",\"type\":\"metric\",\"series\":[{\"id\":\"61ca57f1-469d-11e7-af02-69e470af7417\",\"color\":\"#68BC00\",\"split_mode\":\"filter\",\"split_color_mode\":\"kibana\",\"metrics\":[{\"id\":\"61ca57f2-469d-11e7-af02-69e470af7417\",\"type\":\"count\",\"denominator\":{\"query\":\"(page.name:images or page.name:works)\\nand\\npage.query.query:*\\nand\\nproperties.totalResults:*\\nand\\n(page.query.page:1 OR NOT page.query.page:*)\",\"language\":\"kuery\"},\"numerator\":{\"query\":\"page.name:work\\nand\\npage.query.id:*\\nand\\nsource:archive_tree\",\"language\":\"kuery\"}}],\"separate_axis\":0,\"axis_position\":\"right\",\"formatter\":\"number\",\"chart_type\":\"line\",\"line_width\":1,\"point_size\":1,\"fill\":0.5,\"stacked\":\"none\",\"label\":\" \",\"type\":\"timeseries\",\"filter\":{\"query\":\"page.name:work\\nand\\npage.query.id:*\\nand\\nsource:archive_tree and NOT network.keyword : \\\"StaffCorporateDevices\\\" \",\"language\":\"kuery\"}}],\"time_field\":\"@timestamp\",\"index_pattern\":\"conversion*\",\"interval\":\"\",\"axis_position\":\"left\",\"axis_formatter\":\"number\",\"axis_scale\":\"normal\",\"show_legend\":1,\"show_grid\":1,\"tooltip_mode\":\"show_all\",\"isModelInvalid\":false,\"background_color_rules\":[{\"id\":\"e23ee4b0-55bb-11eb-bf22-c3530824ec1f\"}],\"time_range_mode\":\"entire_time_range\",\"use_kibana_indexes\":false,\"hide_last_value_indicator\":true}}"
+    },
+    "coreMigrationVersion": "7.14.0",
+    "id": "3cc14bd0-6179-11eb-81f0-cfa2d1964087",
+    "migrationVersion": {
+        "visualization": "7.14.0"
+    },
+    "references": [],
+    "type": "visualization",
+    "updated_at": "2021-01-28T14:58:57.249Z",
+    "version": "WzMzNTksMl0="
+}

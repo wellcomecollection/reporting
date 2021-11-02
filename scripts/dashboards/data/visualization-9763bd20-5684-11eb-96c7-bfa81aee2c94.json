@@ -1,0 +1,21 @@
+{
+    "attributes": {
+        "description": "used in conversion* dashboard",
+        "kibanaSavedObjectMeta": {
+            "searchSourceJSON": "{\"query\":{\"query\":\"\",\"language\":\"kuery\"},\"filter\":[]}"
+        },
+        "title": "searches (metric)",
+        "uiStateJSON": "{}",
+        "version": 1,
+        "visState": "{\"title\":\"searches (metric)\",\"type\":\"metrics\",\"aggs\":[],\"params\":{\"id\":\"61ca57f0-469d-11e7-af02-69e470af7417\",\"type\":\"metric\",\"series\":[{\"id\":\"61ca57f1-469d-11e7-af02-69e470af7417\",\"color\":\"#68BC00\",\"split_mode\":\"filter\",\"split_color_mode\":\"kibana\",\"metrics\":[{\"id\":\"61ca57f2-469d-11e7-af02-69e470af7417\",\"type\":\"cardinality\",\"field\":\"page.query.query.keyword\"}],\"separate_axis\":0,\"axis_position\":\"right\",\"formatter\":\"number\",\"chart_type\":\"line\",\"line_width\":1,\"point_size\":1,\"fill\":0.5,\"stacked\":\"none\",\"filter\":{\"query\":\"(page.name:images or page.name:works)\\nand\\npage.query.query:*\\nand\\nproperties.totalResults:*\\nand\\n(page.query.page:1 OR NOT page.query.page:*) and NOT network.keyword:\\\"StaffCorporateDevices\\\"\",\"language\":\"kuery\"},\"label\":\" \"}],\"time_field\":\"@timestamp\",\"index_pattern\":\"conversion*\",\"interval\":\"\",\"axis_position\":\"left\",\"axis_formatter\":\"number\",\"axis_scale\":\"normal\",\"show_legend\":1,\"show_grid\":1,\"tooltip_mode\":\"show_all\",\"isModelInvalid\":false,\"background_color_rules\":[{\"id\":\"413a6570-5684-11eb-b3c7-e12ef15a7beb\"}],\"time_range_mode\":\"entire_time_range\",\"use_kibana_indexes\":false,\"hide_last_value_indicator\":true}}"
+    },
+    "coreMigrationVersion": "7.14.0",
+    "id": "9763bd20-5684-11eb-96c7-bfa81aee2c94",
+    "migrationVersion": {
+        "visualization": "7.14.0"
+    },
+    "references": [],
+    "type": "visualization",
+    "updated_at": "2021-05-26T08:49:47.726Z",
+    "version": "WzM4NjgsMl0="
+}

@@ -167,3 +167,8 @@ wellcomedigitalplatform.key
 
 node_modules
 .env*
+
+**/data/**/*
+!.gitkeep
+.vscode
+!scripts/dashboards/data/*

@@ -1,0 +1,52 @@
+{
+    "attributes": {
+        "description": "used in conversion dashboard",
+        "kibanaSavedObjectMeta": {
+            "searchSourceJSON": "{\"query\":{\"language\":\"kuery\",\"query\":\"\"},\"filter\":[{\"$state\":{\"store\":\"appState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"key\":\"page.name\",\"negate\":false,\"params\":[\"images\",\"works\"],\"type\":\"phrases\",\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.filter[0].meta.index\"},\"query\":{\"bool\":{\"minimum_should_match\":1,\"should\":[{\"match_phrase\":{\"page.name\":\"images\"}},{\"match_phrase\":{\"page.name\":\"works\"}}]}}},{\"$state\":{\"store\":\"appState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"key\":\"properties.totalResults\",\"negate\":false,\"params\":{\"query\":\"0\"},\"type\":\"phrase\",\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.filter[1].meta.index\"},\"query\":{\"match_phrase\":{\"properties.totalResults\":\"0\"}}},{\"$state\":{\"store\":\"appState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"key\":\"page.query.query.keyword\",\"negate\":true,\"params\":{\"query\":\"\"},\"type\":\"phrase\",\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.filter[2].meta.index\"},\"query\":{\"match_phrase\":{\"page.query.query.keyword\":\"\"}}},{\"$state\":{\"store\":\"appState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"key\":\"page.query.query.keyword\",\"negate\":true,\"params\":{\"query\":\"  \"},\"type\":\"phrase\",\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.filter[3].meta.index\"},\"query\":{\"match_phrase\":{\"page.query.query.keyword\":\"  \"}}},{\"$state\":{\"store\":\"appState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"key\":\"page.query.query.keyword\",\"negate\":true,\"params\":{\"query\":\" \"},\"type\":\"phrase\",\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.filter[4].meta.index\"},\"query\":{\"match_phrase\":{\"page.query.query.keyword\":\" \"}}}],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\"}"
+        },
+        "title": "Popular queries with 0 results (data table)",
+        "uiStateJSON": "{}",
+        "version": 1,
+        "visState": "{\"title\":\"Popular queries with 0 results (data table)\",\"type\":\"table\",\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"params\":{\"customLabel\":\"Total number of queries\"},\"schema\":\"metric\"},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"params\":{\"field\":\"page.query.query.keyword\",\"orderBy\":\"1\",\"order\":\"desc\",\"size\":25,\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"customLabel\":\"Popular queries with 0 results (top 10)\"},\"schema\":\"bucket\"}],\"params\":{\"perPage\":10,\"percentageCol\":\"\",\"showMetricsAtAllLevels\":false,\"showPartialRows\":false,\"showToolbar\":true,\"showTotal\":true,\"sort\":{\"columnIndex\":null,\"direction\":null},\"totalFunc\":\"sum\"}}"
+    },
+    "coreMigrationVersion": "7.14.0",
+    "id": "9c3b5240-5747-11eb-96c7-bfa81aee2c94",
+    "migrationVersion": {
+        "visualization": "7.14.0"
+    },
+    "references": [
+        {
+            "id": "217cebc0-334f-11eb-96c7-bfa81aee2c94",
+            "name": "kibanaSavedObjectMeta.searchSourceJSON.index",
+            "type": "index-pattern"
+        },
+        {
+            "id": "217cebc0-334f-11eb-96c7-bfa81aee2c94",
+            "name": "kibanaSavedObjectMeta.searchSourceJSON.filter[0].meta.index",
+            "type": "index-pattern"
+        },
+        {
+            "id": "217cebc0-334f-11eb-96c7-bfa81aee2c94",
+            "name": "kibanaSavedObjectMeta.searchSourceJSON.filter[1].meta.index",
+            "type": "index-pattern"
+        },
+        {
+            "id": "217cebc0-334f-11eb-96c7-bfa81aee2c94",
+            "name": "kibanaSavedObjectMeta.searchSourceJSON.filter[2].meta.index",
+            "type": "index-pattern"
+        },
+        {
+            "id": "217cebc0-334f-11eb-96c7-bfa81aee2c94",
+            "name": "kibanaSavedObjectMeta.searchSourceJSON.filter[3].meta.index",
+            "type": "index-pattern"
+        },
+        {
+            "id": "217cebc0-334f-11eb-96c7-bfa81aee2c94",
+            "name": "kibanaSavedObjectMeta.searchSourceJSON.filter[4].meta.index",
+            "type": "index-pattern"
+        }
+    ],
+    "type": "visualization",
+    "updated_at": "2021-08-24T14:25:21.106Z",
+    "version": "WzU5OTUsMl0="
+}

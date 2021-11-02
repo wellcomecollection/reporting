@@ -1,0 +1,18 @@
+{
+    "attributes": {
+        "fieldAttrs": "{\"data.position\":{\"count\":2},\"data.resultWorkType\":{\"count\":2},\"data.source\":{\"count\":4},\"event\":{\"count\":9},\"data.id\":{\"count\":1},\"data.id.keyword\":{\"count\":1}}",
+        "fields": "[]",
+        "runtimeFieldMap": "{}",
+        "timeFieldName": "timestamp",
+        "title": "search_relevance_implicit"
+    },
+    "coreMigrationVersion": "7.14.0",
+    "id": "be0b37a0-fa73-11e9-9293-2d7b956e7702",
+    "migrationVersion": {
+        "index-pattern": "7.11.0"
+    },
+    "references": [],
+    "type": "index-pattern",
+    "updated_at": "2021-07-20T08:02:47.247Z",
+    "version": "WzM5OTcsMl0="
+}

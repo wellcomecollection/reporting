@@ -1,0 +1,98 @@
+{
+    "attributes": {
+        "description": "uses conversion* index",
+        "hits": 0,
+        "kibanaSavedObjectMeta": {
+            "searchSourceJSON": "{\"query\":{\"query\":\"\",\"language\":\"kuery\"},\"filter\":[]}"
+        },
+        "optionsJSON": "{\"hidePanelTitles\":false,\"useMargins\":true}",
+        "panelsJSON": "[{\"version\":\"7.12.0\",\"gridData\":{\"x\":0,\"y\":0,\"w\":42,\"h\":5,\"i\":\"68cf66b7-4448-40fc-b8b9-006523be6657\"},\"panelIndex\":\"68cf66b7-4448-40fc-b8b9-006523be6657\",\"embeddableConfig\":{\"enhancements\":{}},\"panelRefName\":\"panel_0\"},{\"version\":\"7.12.0\",\"gridData\":{\"x\":0,\"y\":5,\"w\":10,\"h\":6,\"i\":\"fbd766f0-0786-493a-93c1-62a24ae09d18\"},\"panelIndex\":\"fbd766f0-0786-493a-93c1-62a24ae09d18\",\"embeddableConfig\":{\"enhancements\":{}},\"panelRefName\":\"panel_1\"},{\"version\":\"7.12.0\",\"gridData\":{\"x\":10,\"y\":5,\"w\":32,\"h\":6,\"i\":\"4c1d90dd-a454-4fb3-8f6f-7419ff7d24e3\"},\"panelIndex\":\"4c1d90dd-a454-4fb3-8f6f-7419ff7d24e3\",\"embeddableConfig\":{\"enhancements\":{}},\"panelRefName\":\"panel_2\"},{\"version\":\"7.12.0\",\"gridData\":{\"x\":0,\"y\":11,\"w\":10,\"h\":6,\"i\":\"1b22fc7f-cfab-4537-8b69-0056d428289a\"},\"panelIndex\":\"1b22fc7f-cfab-4537-8b69-0056d428289a\",\"embeddableConfig\":{\"enhancements\":{}},\"panelRefName\":\"panel_3\"},{\"version\":\"7.12.0\",\"gridData\":{\"x\":10,\"y\":11,\"w\":32,\"h\":6,\"i\":\"658d3d34-6685-4b71-aada-133c8ebc19f3\"},\"panelIndex\":\"658d3d34-6685-4b71-aada-133c8ebc19f3\",\"embeddableConfig\":{\"enhancements\":{}},\"panelRefName\":\"panel_4\"},{\"version\":\"7.12.0\",\"gridData\":{\"x\":0,\"y\":17,\"w\":10,\"h\":7,\"i\":\"bfd66c31-5da5-43a2-b344-3985d18eafbe\"},\"panelIndex\":\"bfd66c31-5da5-43a2-b344-3985d18eafbe\",\"embeddableConfig\":{\"enhancements\":{}},\"panelRefName\":\"panel_5\"},{\"version\":\"7.12.0\",\"gridData\":{\"x\":10,\"y\":17,\"w\":32,\"h\":7,\"i\":\"4eb43fb0-c8bb-49f1-9d2c-73950c48f2e3\"},\"panelIndex\":\"4eb43fb0-c8bb-49f1-9d2c-73950c48f2e3\",\"embeddableConfig\":{\"enhancements\":{}},\"panelRefName\":\"panel_6\"},{\"version\":\"7.12.0\",\"gridData\":{\"x\":0,\"y\":24,\"w\":10,\"h\":6,\"i\":\"f8bab9a5-d937-4c09-8f3b-d557ae93f217\"},\"panelIndex\":\"f8bab9a5-d937-4c09-8f3b-d557ae93f217\",\"embeddableConfig\":{\"enhancements\":{}},\"panelRefName\":\"panel_7\"},{\"version\":\"7.12.0\",\"gridData\":{\"x\":10,\"y\":24,\"w\":32,\"h\":6,\"i\":\"b4c54826-64b9-472d-bc62-b578c81f21a0\"},\"panelIndex\":\"b4c54826-64b9-472d-bc62-b578c81f21a0\",\"embeddableConfig\":{\"enhancements\":{}},\"panelRefName\":\"panel_8\"},{\"version\":\"7.12.0\",\"gridData\":{\"x\":0,\"y\":30,\"w\":10,\"h\":6,\"i\":\"8161d442-261a-4aae-80ef-b8610902365a\"},\"panelIndex\":\"8161d442-261a-4aae-80ef-b8610902365a\",\"embeddableConfig\":{\"enhancements\":{}},\"panelRefName\":\"panel_9\"},{\"version\":\"7.12.0\",\"gridData\":{\"x\":10,\"y\":30,\"w\":32,\"h\":6,\"i\":\"9635fad9-17fb-43cb-a72e-017a36a9df5e\"},\"panelIndex\":\"9635fad9-17fb-43cb-a72e-017a36a9df5e\",\"embeddableConfig\":{\"enhancements\":{}},\"panelRefName\":\"panel_10\"},{\"version\":\"7.12.0\",\"gridData\":{\"x\":0,\"y\":36,\"w\":42,\"h\":8,\"i\":\"e3718ad8-092e-41cc-aa24-621ff6bc65d1\"},\"panelIndex\":\"e3718ad8-092e-41cc-aa24-621ff6bc65d1\",\"embeddableConfig\":{\"enhancements\":{}},\"panelRefName\":\"panel_11\"},{\"version\":\"7.12.0\",\"gridData\":{\"x\":0,\"y\":44,\"w\":42,\"h\":8,\"i\":\"dc36e07a-087d-4369-9f1f-bae398da85da\"},\"panelIndex\":\"dc36e07a-087d-4369-9f1f-bae398da85da\",\"embeddableConfig\":{\"enhancements\":{}},\"panelRefName\":\"panel_12\"},{\"version\":\"7.12.0\",\"gridData\":{\"x\":0,\"y\":52,\"w\":31,\"h\":19,\"i\":\"3dd3c37b-ae0c-47a1-91c1-0a4267adbb8b\"},\"panelIndex\":\"3dd3c37b-ae0c-47a1-91c1-0a4267adbb8b\",\"embeddableConfig\":{\"enhancements\":{}},\"panelRefName\":\"panel_13\"}]",
+        "timeRestore": false,
+        "title": "Search dashboard ",
+        "version": 1
+    },
+    "coreMigrationVersion": "7.14.0",
+    "id": "88c2ee40-3b9e-11eb-96c7-bfa81aee2c94",
+    "migrationVersion": {
+        "dashboard": "7.14.0"
+    },
+    "references": [
+        {
+            "id": "37b845a0-71fd-11eb-bcd6-c58220746d65",
+            "name": "panel_0",
+            "type": "visualization"
+        },
+        {
+            "id": "3b073b10-5689-11eb-96c7-bfa81aee2c94",
+            "name": "panel_1",
+            "type": "visualization"
+        },
+        {
+            "id": "fa0cb590-5688-11eb-96c7-bfa81aee2c94",
+            "name": "panel_2",
+            "type": "visualization"
+        },
+        {
+            "id": "9763bd20-5684-11eb-96c7-bfa81aee2c94",
+            "name": "panel_3",
+            "type": "visualization"
+        },
+        {
+            "id": "0a2e55e0-5685-11eb-96c7-bfa81aee2c94",
+            "name": "panel_4",
+            "type": "visualization"
+        },
+        {
+            "id": "19033f40-6224-11eb-81f0-cfa2d1964087",
+            "name": "panel_5",
+            "type": "visualization"
+        },
+        {
+            "id": "e07830d0-6224-11eb-81f0-cfa2d1964087",
+            "name": "panel_6",
+            "type": "visualization"
+        },
+        {
+            "id": "ad414c40-568c-11eb-96c7-bfa81aee2c94",
+            "name": "panel_7",
+            "type": "visualization"
+        },
+        {
+            "id": "5eb7b500-568c-11eb-96c7-bfa81aee2c94",
+            "name": "panel_8",
+            "type": "visualization"
+        },
+        {
+            "id": "7c86bab0-571b-11eb-96c7-bfa81aee2c94",
+            "name": "panel_9",
+            "type": "visualization"
+        },
+        {
+            "id": "cc315250-571b-11eb-96c7-bfa81aee2c94",
+            "name": "panel_10",
+            "type": "visualization"
+        },
+        {
+            "id": "2db8fbd0-7c39-11eb-bcd6-c58220746d65",
+            "name": "panel_11",
+            "type": "lens"
+        },
+        {
+            "id": "9b082960-866e-11eb-bcd6-c58220746d65",
+            "name": "panel_12",
+            "type": "lens"
+        },
+        {
+            "id": "9c3b5240-5747-11eb-96c7-bfa81aee2c94",
+            "name": "panel_13",
+            "type": "visualization"
+        }
+    ],
+    "sort": [
+        1624288158556,
+        2271
+    ],
+    "type": "dashboard",
+    "updated_at": "2021-06-21T15:09:18.556Z",
+    "version": "WzM2NzYsMl0="
+}
