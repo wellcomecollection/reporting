@@ -1,6 +1,6 @@
 # Lambda
 
-This set of scripts and files deploys the lambda which acts between kinesis and elastic.  
+This set of scripts and files deploys the lambda which acts between kinesis and elastic (see [architecture diagram](../architecture.svg)).  
 NB this requires a valid set of AWS credentials which can assume the `experience-admin` role.
 
 ## Updating the lambda
