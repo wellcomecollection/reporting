@@ -2,7 +2,7 @@
 
 The typical reporting pipeline looks like:
 
-    data source => messaging service (SQS / Kinesis) => lambda => Elasticsearch index
+    source data => messaging service (SQS / Kinesis) => lambda => Elasticsearch index
 
 Source data lambdas can be seen in [the lambdas directory](../lambdas)
 
