@@ -1,5 +1,7 @@
 const querystringParameters = {
   _queryType: 'text',
+  workId: 'keyword',
+  id: 'keyword',
   availabilities: 'csv',
   canvas: 'float',
   current: 'float',

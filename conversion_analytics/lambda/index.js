@@ -20,7 +20,8 @@ const secretsManager = new AWS.SecretsManager({
 })
 
 async function processEvent (event, context, callback) {
-  const conversions = event.Records.map(function (record) {
+  const conversions = event.Records.map((record) => {
+    // eslint-disable-next-line node/no-deprecated-api
     const payload = new Buffer(record.kinesis.data, 'base64').toString('utf-8')
     try {
       const json = JSON.parse(payload)
@@ -30,6 +31,7 @@ async function processEvent (event, context, callback) {
     } catch (e) {
       console.error(e, payload)
     }
+    return undefined
   })
     .filter(Boolean)
     .reduce(function (acc, tuple) {
