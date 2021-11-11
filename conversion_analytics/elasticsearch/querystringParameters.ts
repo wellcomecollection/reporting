@@ -1,4 +1,6 @@
-const querystringParameters = {
+export type ParameterType = 'text' | 'keyword' | 'float' | 'csv'
+
+const querystringParameters: Record<string, ParameterType> = {
   _queryType: 'text',
   workId: 'keyword',
   id: 'keyword',
