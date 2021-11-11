@@ -16,31 +16,29 @@ const client = new Client({
   }
 })
 
-
-
-async function main() {
+async function main () {
   // create ilm
   await client.ilm.putLifecycle({
     policy: ilm.name,
-    body: ilm.body,
-  }).catch(err => { console.error(err.meta.body); throw err; })
-  
+    body: ilm.body
+  }).catch(err => { console.error(err.meta.body); throw err })
+
   // create component template
   await client.cluster.putComponentTemplate({
     name: componentTemplate.name,
     body: componentTemplate.body
-  }).catch(err => { console.error(err.meta.body); throw err; })
-  
+  }).catch(err => { console.error(err.meta.body); throw err })
+
   // create index template
   await client.indices.putIndexTemplate({
     name: indexTemplate.name,
     body: indexTemplate.body
-  }).catch(err => { console.error(err.meta.body); throw err; })
-  
+  }).catch(err => { console.error(err.meta.body); throw err })
+
   // create data stream
   await client.indices.createDataStream({
     name: indexTemplate.indexPatternName
-  }).catch(err => { console.error(err.meta.body); throw err; })
+  }).catch(err => { console.error(err.meta.body); throw err })
 }
 
 main()
