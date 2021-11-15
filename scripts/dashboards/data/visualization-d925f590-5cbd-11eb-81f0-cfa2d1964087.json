@@ -1,0 +1,27 @@
+{
+    "attributes": {
+        "description": "Used in conversion* dashboards",
+        "kibanaSavedObjectMeta": {
+            "searchSourceJSON": "{\"query\":{\"query\":\"(page.name:item or page.name:image)\\nand\\n(page.query.canvas.number:1 or NOT page.query.canvas.number:*)\\nand\\nNOT (source:viewer/paginator)\",\"language\":\"kuery\"},\"filter\":[],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\"}"
+        },
+        "title": "Popular items viewed",
+        "uiStateJSON": "{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":null,\"direction\":null}}}}",
+        "version": 1,
+        "visState": "{\"title\":\"Popular items viewed\",\"type\":\"table\",\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"cardinality\",\"params\":{\"field\":\"anonymousId\",\"customLabel\":\"Total users viewed\"},\"schema\":\"metric\"},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"params\":{\"field\":\"page.query.workId.keyword\",\"orderBy\":\"1\",\"order\":\"desc\",\"size\":13,\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"customLabel\":\"workId\"},\"schema\":\"bucket\"}],\"params\":{\"perPage\":10,\"showPartialRows\":false,\"showMetricsAtAllLevels\":false,\"sort\":{\"columnIndex\":null,\"direction\":null},\"showTotal\":false,\"totalFunc\":\"sum\",\"percentageCol\":\"\",\"showToolbar\":true}}"
+    },
+    "coreMigrationVersion": "7.14.0",
+    "id": "d925f590-5cbd-11eb-81f0-cfa2d1964087",
+    "migrationVersion": {
+        "visualization": "7.14.0"
+    },
+    "references": [
+        {
+            "id": "217cebc0-334f-11eb-96c7-bfa81aee2c94",
+            "name": "kibanaSavedObjectMeta.searchSourceJSON.index",
+            "type": "index-pattern"
+        }
+    ],
+    "type": "visualization",
+    "updated_at": "2021-05-26T08:44:44.492Z",
+    "version": "WzM4NjcsMl0="
+}

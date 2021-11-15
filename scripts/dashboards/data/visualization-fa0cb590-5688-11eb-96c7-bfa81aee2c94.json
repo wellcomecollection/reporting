@@ -1,0 +1,21 @@
+{
+    "attributes": {
+        "description": "used in conversion dashboard",
+        "kibanaSavedObjectMeta": {
+            "searchSourceJSON": "{}"
+        },
+        "title": "sessions (time series)",
+        "uiStateJSON": "{}",
+        "version": 1,
+        "visState": "{\"title\":\"sessions (time series)\",\"type\":\"metrics\",\"aggs\":[],\"params\":{\"id\":\"61ca57f0-469d-11e7-af02-69e470af7417\",\"type\":\"timeseries\",\"series\":[{\"id\":\"61ca57f1-469d-11e7-af02-69e470af7417\",\"color\":\"#68BC00\",\"split_mode\":\"filter\",\"split_color_mode\":\"kibana\",\"metrics\":[{\"id\":\"61ca57f2-469d-11e7-af02-69e470af7417\",\"type\":\"cardinality\",\"field\":\"session.id\"}],\"separate_axis\":0,\"axis_position\":\"right\",\"formatter\":\"number\",\"chart_type\":\"line\",\"line_width\":1,\"point_size\":1,\"fill\":0.5,\"stacked\":\"none\",\"label\":\"\",\"type\":\"timeseries\",\"filter\":{\"query\":\"NOT network.keyword:\\\"StaffCorporateDevices\\\" \",\"language\":\"kuery\"},\"hide_in_legend\":1}],\"time_field\":\"@timestamp\",\"index_pattern\":\"conversion*\",\"interval\":\"\",\"axis_position\":\"left\",\"axis_formatter\":\"number\",\"axis_scale\":\"normal\",\"show_legend\":0,\"show_grid\":1,\"tooltip_mode\":\"show_all\",\"isModelInvalid\":false,\"background_color_rules\":[{\"id\":\"3f276720-5688-11eb-9370-cf31d8fa6c36\"}],\"filter\":{\"query\":\"NOT network.keyword:\\\"StaffCorporateDevices\\\" \",\"language\":\"kuery\"},\"legend_position\":\"right\",\"use_kibana_indexes\":false}}"
+    },
+    "coreMigrationVersion": "7.14.0",
+    "id": "fa0cb590-5688-11eb-96c7-bfa81aee2c94",
+    "migrationVersion": {
+        "visualization": "7.14.0"
+    },
+    "references": [],
+    "type": "visualization",
+    "updated_at": "2021-01-14T17:02:32.177Z",
+    "version": "WzMzNDQsMl0="
+}

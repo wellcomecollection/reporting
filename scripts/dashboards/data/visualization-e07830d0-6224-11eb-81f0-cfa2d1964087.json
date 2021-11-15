@@ -1,0 +1,21 @@
+{
+    "attributes": {
+        "description": "",
+        "kibanaSavedObjectMeta": {
+            "searchSourceJSON": "{\"query\":{\"query\":\"\",\"language\":\"kuery\"},\"filter\":[]}"
+        },
+        "title": "Works page views (time series)",
+        "uiStateJSON": "{}",
+        "version": 1,
+        "visState": "{\"title\":\"Works page views (time series)\",\"type\":\"metrics\",\"aggs\":[],\"params\":{\"id\":\"61ca57f0-469d-11e7-af02-69e470af7417\",\"type\":\"timeseries\",\"series\":[{\"id\":\"61ca57f1-469d-11e7-af02-69e470af7417\",\"color\":\"#68BC00\",\"split_mode\":\"filter\",\"split_color_mode\":\"kibana\",\"metrics\":[{\"id\":\"61ca57f2-469d-11e7-af02-69e470af7417\",\"type\":\"count\",\"numerator\":{\"query\":\"page.name:work\\nand\\npage.query.id:*\",\"language\":\"kuery\"},\"denominator\":{\"query\":\"(page.name:images or page.name:works)\\nand\\npage.query.query:*\\nand\\nproperties.totalResults:*\\nand\\n(page.query.page:1 OR NOT page.query.page:*)\",\"language\":\"kuery\"},\"metric_agg\":\"cardinality\",\"field\":\"session.id\"}],\"separate_axis\":0,\"axis_position\":\"right\",\"formatter\":\"number\",\"chart_type\":\"line\",\"line_width\":1,\"point_size\":1,\"fill\":0.5,\"stacked\":\"none\",\"label\":\"\",\"type\":\"timeseries\",\"filter\":{\"query\":\"page.name:work\\nand\\npage.query.id:* and NOT network.keyword : \\\"StaffCorporateDevices\\\" \",\"language\":\"kuery\"}}],\"time_field\":\"@timestamp\",\"index_pattern\":\"conversion*\",\"interval\":\"\",\"axis_position\":\"left\",\"axis_formatter\":\"number\",\"axis_scale\":\"normal\",\"show_legend\":0,\"show_grid\":1,\"tooltip_mode\":\"show_all\",\"isModelInvalid\":false,\"use_kibana_indexes\":false}}"
+    },
+    "coreMigrationVersion": "7.14.0",
+    "id": "e07830d0-6224-11eb-81f0-cfa2d1964087",
+    "migrationVersion": {
+        "visualization": "7.14.0"
+    },
+    "references": [],
+    "type": "visualization",
+    "updated_at": "2021-01-29T11:28:19.429Z",
+    "version": "WzMzNjYsMl0="
+}

@@ -1,0 +1,64 @@
+{
+    "attributes": {
+        "description": "Dashboard feeding into Digital Engagement Indicators Google Sheet.",
+        "hits": 0,
+        "kibanaSavedObjectMeta": {
+            "searchSourceJSON": "{\"query\":{\"language\":\"kuery\",\"query\":\"\"},\"filter\":[]}"
+        },
+        "optionsJSON": "{\"hidePanelTitles\":false,\"useMargins\":true}",
+        "panelsJSON": "[{\"version\":\"7.9.0\",\"gridData\":{\"x\":0,\"y\":0,\"w\":16,\"h\":7,\"i\":\"b4121021-f926-4688-9b58-4da75e37cb68\"},\"panelIndex\":\"b4121021-f926-4688-9b58-4da75e37cb68\",\"embeddableConfig\":{\"enhancements\":{}},\"panelRefName\":\"panel_0\"},{\"version\":\"7.9.0\",\"gridData\":{\"x\":17,\"y\":0,\"w\":15,\"h\":7,\"i\":\"6ff0c285-f5f9-4fe2-9375-e05844768034\"},\"panelIndex\":\"6ff0c285-f5f9-4fe2-9375-e05844768034\",\"embeddableConfig\":{\"enhancements\":{}},\"panelRefName\":\"panel_1\"},{\"version\":\"7.9.0\",\"gridData\":{\"x\":32,\"y\":0,\"w\":16,\"h\":7,\"i\":\"67c0cfc0-1f7c-4307-a724-54fdf04201ac\"},\"panelIndex\":\"67c0cfc0-1f7c-4307-a724-54fdf04201ac\",\"embeddableConfig\":{\"enhancements\":{}},\"panelRefName\":\"panel_2\"},{\"version\":\"7.9.0\",\"gridData\":{\"x\":0,\"y\":7,\"w\":24,\"h\":15,\"i\":\"49af3a31-43e9-4935-a46d-451daddcf9a9\"},\"panelIndex\":\"49af3a31-43e9-4935-a46d-451daddcf9a9\",\"embeddableConfig\":{\"enhancements\":{}},\"panelRefName\":\"panel_3\"},{\"version\":\"7.9.0\",\"gridData\":{\"x\":24,\"y\":7,\"w\":12,\"h\":8,\"i\":\"70116f5b-19d1-48c0-ae08-b60e567b4cab\"},\"panelIndex\":\"70116f5b-19d1-48c0-ae08-b60e567b4cab\",\"embeddableConfig\":{\"enhancements\":{}},\"panelRefName\":\"panel_4\"},{\"version\":\"7.9.0\",\"gridData\":{\"x\":36,\"y\":7,\"w\":12,\"h\":8,\"i\":\"a2d13b6a-d782-4301-85fc-b5b26d9c5f52\"},\"panelIndex\":\"a2d13b6a-d782-4301-85fc-b5b26d9c5f52\",\"embeddableConfig\":{\"enhancements\":{}},\"panelRefName\":\"panel_5\"}]",
+        "refreshInterval": {
+            "pause": true,
+            "value": 0
+        },
+        "timeFrom": "2020-01-01T11:59:39.392Z",
+        "timeRestore": true,
+        "timeTo": "2020-03-31T11:14:53.240Z",
+        "title": "Digital Engagement Indicators:  search",
+        "version": 1
+    },
+    "coreMigrationVersion": "7.14.0",
+    "id": "cc305a80-83bd-11ea-9870-49dec0e260d5",
+    "migrationVersion": {
+        "dashboard": "7.14.0"
+    },
+    "references": [
+        {
+            "id": "9d9981d0-83d4-11ea-9870-49dec0e260d5",
+            "name": "panel_0",
+            "type": "visualization"
+        },
+        {
+            "id": "2b2cf220-83d5-11ea-9870-49dec0e260d5",
+            "name": "panel_1",
+            "type": "visualization"
+        },
+        {
+            "id": "d6ce9550-ff20-11e9-a050-0352b7b3fbe3",
+            "name": "panel_2",
+            "type": "visualization"
+        },
+        {
+            "id": "3a791180-ff20-11e9-a050-0352b7b3fbe3",
+            "name": "panel_3",
+            "type": "visualization"
+        },
+        {
+            "id": "7e495a00-c757-11ea-8175-efb55f54ba0b",
+            "name": "panel_4",
+            "type": "visualization"
+        },
+        {
+            "id": "4477fe20-f435-11ea-9806-49e6f8194068",
+            "name": "panel_5",
+            "type": "visualization"
+        }
+    ],
+    "sort": [
+        1599832253787,
+        2866
+    ],
+    "type": "dashboard",
+    "updated_at": "2020-09-11T13:50:53.787Z",
+    "version": "WzIyMDIsMl0="
+}

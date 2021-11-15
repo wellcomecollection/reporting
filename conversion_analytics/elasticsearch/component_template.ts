@@ -1,5 +1,28 @@
 import { name as ilmName } from './ilm'
-import querystringParameters from './querystringParameters'
+import querystringParameters, { ParameterType } from './querystringParameters'
+
+type ElasticType = { type: string, [key: string]: unknown }
+function parameterToElasticType (key: string, parameterType: ParameterType): ElasticType {
+  // `query` is a special use case where we have both text and keyword.
+  // To avoid overloading  querystringParameters, we support that edgecase here
+  if (key === 'query') {
+    return {
+      type: 'text',
+      fields: { keyword: { type: 'keyword' } }
+    }
+  }
+
+  switch (parameterType) {
+    case 'csv':
+      return { type: 'text', analyzer: 'csv_analyzer' }
+    case 'float':
+      return { type: 'float', ignore_malformed: true }
+    case 'keyword':
+      return { type: 'keyword' }
+    case 'text':
+      return { type: 'text' }
+  }
+}
 
 export const name = 'conversion_component_template'
 
@@ -91,16 +114,10 @@ export const body = {
             query: {
               dynamic: false,
               properties: Object.entries(querystringParameters).reduce(
-                (acc, [key, type]) => {
-                  const typeObj =
-                    type === 'csv'
-                      ? { type: 'text', analyzer: 'csv_analyzer' }
-                      : type === 'float'
-                        ? { type: 'float', ignore_malformed: true }
-                        : { type }
+                (acc, [key, parameterType]) => {
                   return {
                     ...acc,
-                    [key.replace(/\./g, '_')]: typeObj
+                    [key.replace(/\./g, '_')]: parameterToElasticType(key, parameterType)
                   }
                 },
                 {}

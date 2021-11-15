@@ -1,0 +1,21 @@
+{
+    "attributes": {
+        "description": "Used in Collections dashboard",
+        "kibanaSavedObjectMeta": {
+            "searchSourceJSON": "{\"query\":{\"query\":\"\",\"language\":\"kuery\"},\"filter\":[]}"
+        },
+        "title": "items viewed (metric)",
+        "uiStateJSON": "{}",
+        "version": 1,
+        "visState": "{\"title\":\"items viewed (metric)\",\"type\":\"metrics\",\"aggs\":[],\"params\":{\"axis_formatter\":\"number\",\"axis_position\":\"left\",\"axis_scale\":\"normal\",\"background_color_rules\":[{\"id\":\"0af03950-411b-11eb-98fe-8fb0f9f4ba8c\"}],\"id\":\"61ca57f0-469d-11e7-af02-69e470af7417\",\"index_pattern\":\"conversion*\",\"interval\":\"\",\"isModelInvalid\":false,\"series\":[{\"axis_position\":\"right\",\"chart_type\":\"line\",\"color\":\"#68BC00\",\"fill\":0.5,\"filter\":{\"query\":\"(page.name:item or page.name:image)\\nand\\nNOT (source:viewer/paginator)\\nand NOT network.keyword :\\\"StaffCorporateDevices\\\" \",\"language\":\"kuery\"},\"formatter\":\"0,000\",\"id\":\"61ca57f1-469d-11e7-af02-69e470af7417\",\"label\":\" \",\"line_width\":1,\"metrics\":[{\"denominator\":{\"query\":\"\",\"language\":\"kuery\"},\"field\":\"session.id\",\"id\":\"cfb768a0-411e-11eb-98fe-8fb0f9f4ba8c\",\"metric_agg\":\"cardinality\",\"numerator\":{\"query\":\"(page.name:item or page.name:image)\\nand\\n(page.query.canvas.number:1 or NOT page.query.canvas.number:*)\\nand\\nNOT (source:viewer/paginator)\\n\",\"language\":\"kuery\"},\"type\":\"count\"}],\"point_size\":1,\"separate_axis\":0,\"split_color_mode\":\"kibana\",\"split_filters\":[{\"color\":\"#68BC00\",\"filter\":{\"language\":\"kuery\",\"query\":\"page.name\"},\"id\":\"2c07ea80-411f-11eb-98fe-8fb0f9f4ba8c\",\"label\":\"\"}],\"split_mode\":\"filter\",\"stacked\":\"none\",\"type\":\"timeseries\"}],\"show_grid\":1,\"show_legend\":1,\"time_field\":\"@timestamp\",\"time_range_mode\":\"entire_time_range\",\"tooltip_mode\":\"show_all\",\"type\":\"metric\",\"use_kibana_indexes\":false,\"hide_last_value_indicator\":true}}"
+    },
+    "coreMigrationVersion": "7.14.0",
+    "id": "7fc7d4a0-9d27-11eb-b513-7d9c59d114e4",
+    "migrationVersion": {
+        "visualization": "7.14.0"
+    },
+    "references": [],
+    "type": "visualization",
+    "updated_at": "2021-05-19T09:17:51.350Z",
+    "version": "WzM4MTgsMl0="
+}
