@@ -16,7 +16,8 @@ const querystringParameters: Record<string, ParameterType> = {
   source: 'text',
   'subjects.label': 'csv',
   'contributors.agent.label': 'csv',
-  workType: 'csv'
+  workType: 'csv',
+  resultPosition: 'float'
 }
 
 export default querystringParameters
