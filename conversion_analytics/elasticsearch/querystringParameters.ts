@@ -12,6 +12,7 @@ const querystringParameters: Record<string, ParameterType> = {
   languages: 'csv',
   manifest: 'float',
   page: 'float',
+  'partOf.label': 'keyword',
   query: 'text',
   source: 'text',
   'subjects.label': 'csv',
