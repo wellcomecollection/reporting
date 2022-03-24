@@ -1,5 +1,6 @@
-import { name as ilmName } from './ilm'
 import querystringParameters, { ParameterType } from './querystringParameters'
+
+import { name as ilmName } from './ilm'
 
 type ElasticType = { type: string, [key: string]: unknown }
 function parameterToElasticType (key: string, parameterType: ParameterType): ElasticType {
@@ -14,7 +15,11 @@ function parameterToElasticType (key: string, parameterType: ParameterType): Ela
 
   switch (parameterType) {
     case 'csv':
-      return { type: 'text', analyzer: 'csv_analyzer' }
+      return {
+        type: 'text',
+        analyzer: 'csv_analyzer',
+        fields: { keyword: { type: 'keyword' } }
+      }
     case 'float':
       return { type: 'float', ignore_malformed: true }
     case 'keyword':
