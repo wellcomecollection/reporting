@@ -1,23 +1,27 @@
-export type ParameterType = 'text' | 'keyword' | 'float' | 'csv'
+export type ParameterType = "text" | "keyword" | "float" | "csv";
 
 const querystringParameters: Record<string, ParameterType> = {
-  _queryType: 'text',
-  workId: 'keyword',
-  id: 'keyword',
-  availabilities: 'csv',
-  canvas: 'float',
-  current: 'float',
-  'genres.label': 'csv',
-  'items.locations.locationType': 'csv',
-  languages: 'csv',
-  manifest: 'float',
-  page: 'float',
-  query: 'text',
-  source: 'text',
-  'subjects.label': 'csv',
-  'contributors.agent.label': 'csv',
-  workType: 'csv',
-  resultPosition: 'float'
-}
+  _queryType: "text",
+  color: "keyword",
+  "contributors.agent.label": "csv",
+  "genres.label": "csv",
+  "items.locations.locationType": "csv",
+  "locations.license": "csv",
+  "partOf.label": "keyword",
+  "source.genres.label": "csv",
+  "subjects.label": "csv",
+  availabilities: "csv",
+  canvas: "float",
+  current: "float",
+  id: "keyword",
+  languages: "csv",
+  manifest: "float",
+  page: "float",
+  query: "text",
+  resultPosition: "float",
+  source: "text",
+  workId: "keyword",
+  workType: "csv",
+};
 
-export default querystringParameters
+export default querystringParameters;
