@@ -7,7 +7,7 @@ const querystringParameters: Record<string, ParameterType> = {
   "genres.label": "csv",
   "items.locations.locationType": "csv",
   "locations.license": "csv",
-  "partOf.label": "keyword",
+  "partOf.title": "keyword",
   "source.genres.label": "csv",
   "subjects.label": "csv",
   availabilities: "csv",
