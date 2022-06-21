@@ -9,6 +9,7 @@ const querystringParameters: Record<string, ParameterType> = {
   "locations.license": "csv",
   "partOf.title": "keyword",
   "source.genres.label": "csv",
+  "source.subjects.label": "csv",
   "subjects.label": "csv",
   availabilities: "csv",
   canvas: "float",
