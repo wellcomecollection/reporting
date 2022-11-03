@@ -11,6 +11,8 @@ const querystringParameters: Record<string, ParameterType> = {
   "source.genres.label": "csv",
   "source.subjects.label": "csv",
   "subjects.label": "csv",
+  "production.dates.to": "float",
+  "production.dates.from": "float",
   availabilities: "csv",
   canvas: "float",
   current: "float",
