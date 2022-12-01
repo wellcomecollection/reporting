@@ -1,4 +1,3 @@
-// PUT _ilm/policy/conversion_data_stream_lifecycle_policy
 export const name = 'conversion_data_stream_lifecycle_policy'
 export const body = {
   "policy": {
