@@ -97,13 +97,6 @@ function parseConversion(segmentEvent) {
   console.info(esDoc)
   return [
     {
-      index: {
-        _index: 'conversion',
-        _id: messageId
-      }
-    },
-    esDoc,
-    {
       create: {
         _index: 'metrics-conversion-prod',
         _id: messageId
