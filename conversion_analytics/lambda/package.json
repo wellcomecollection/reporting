@@ -9,7 +9,7 @@
     "deploy": "node ./copy-to-s3"
   },
   "dependencies": {
-    "@elastic/elasticsearch": "^7.4.0"
+    "@elastic/elasticsearch": "^8.4.0"
   },
   "devDependencies": {
     "aws-sdk": "^2.799.0",

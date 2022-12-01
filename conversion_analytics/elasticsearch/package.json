@@ -1,7 +1,7 @@
 {
   "name": "@weco/conversion-analytics-elasticsearch",
   "devDependencies": {
-    "@elastic/elasticsearch": "^7.15.0",
+    "@elastic/elasticsearch": "^8.4.0",
     "@types/node": "^16.11.1"
   },
   "dependencies": {
