@@ -1,39 +1,71 @@
-import dotenv from 'dotenv'
-import { Client } from '@elastic/elasticsearch'
-import * as componentTemplate from './component_template'
-import * as indexTemplate from './index_template'
-import { indexPatternName } from './index_template'
+import * as conversionConfig from "./metrics-conversion-prod";
+import * as similarityConfig from "./metrics-similarity-prod";
 
-dotenv.config()
+import { Client } from "@elastic/elasticsearch";
+import dotenv from "dotenv";
+import prompts from "prompts";
+
+dotenv.config();
 
 const client = new Client({
   cloud: {
-    id: process.env.ELASTIC_CLOUD_ID!
+    id: process.env.ELASTIC_CLOUD_ID!,
   },
   auth: {
     username: process.env.ELASTIC_USERNAME!,
-    password: process.env.ELASTIC_PASSWORD!
-  }
-})
+    password: process.env.ELASTIC_PASSWORD!,
+  },
+});
 
-async function main () {
+async function main() {
+  const { dataStreamName } = await prompts([
+    {
+      type: "multiselect",
+      name: "dataStreamName",
+      message: "Which data stream's mapping would you like to update?",
+      choices: [
+        { title: "metrics-conversion-prod", value: "metrics-conversion-prod" },
+        { title: "metrics-similarity-prod", value: "metrics-similarity-prod" },
+      ],
+    },
+  ]);
+
+  let config;
+  if (dataStreamName === "metrics-conversion-prod") {
+    config = conversionConfig;
+  } else if (dataStreamName === "metrics-similarity-prod") {
+    config = similarityConfig;
+  } else {
+    throw new Error("Invalid data stream name");
+  }
+
   // create component template
-  await client.cluster.putComponentTemplate({
-    name: componentTemplate.name,
-    body: componentTemplate.body
-  }).catch(err => { console.error(err.meta.body); throw err })
+  await client.cluster
+    .putComponentTemplate({
+      name: config.componentTemplate.name,
+      body: config.componentTemplate.body,
+    })
+    .catch((err) => {
+      console.error(err.meta.body);
+      throw err;
+    });
 
   // create index template
-  await client.indices.putIndexTemplate({
-    name: indexTemplate.name,
-    body: indexTemplate.body
-  }).catch(err => { console.error(err.meta.body); throw err })
+  await client.indices
+    .putIndexTemplate({
+      name: config.indexTemplate.name,
+      body: config.indexTemplate.body,
+    })
+    .catch((err) => {
+      console.error(err.meta.body);
+      throw err;
+    });
 
   // update existing mapping
   await client.indices.putMapping({
-    index: indexPatternName,
-    body: componentTemplate.body.template.mappings
-  })
+    index: config.indexTemplate.indexPatternName,
+    body: config.componentTemplate.body.template.mappings,
+  });
 }
 
-main()
+main();
