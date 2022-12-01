@@ -20,7 +20,7 @@ const client = new Client({
 async function main() {
   const { dataStreamName } = await prompts([
     {
-      type: "multiselect",
+      type: "select",
       name: "dataStreamName",
       message: "Which data stream would you like to create?",
       choices: [
@@ -30,7 +30,7 @@ async function main() {
     },
   ]);
 
-  let config;
+  let config: typeof conversionConfig | typeof similarityConfig;
   if (dataStreamName === "metrics-conversion-prod") {
     config = conversionConfig;
   } else if (dataStreamName === "metrics-similarity-prod") {
@@ -42,8 +42,8 @@ async function main() {
   // create ilm
   await client.ilm
     .putLifecycle({
-      policy: config.ilm.name,
-      body: config.ilm.body,
+      name: config.ilm.name,
+      policy: config.ilm.body,
     })
     .catch((err) => {
       console.error(err.meta.body);
@@ -54,7 +54,7 @@ async function main() {
   await client.cluster
     .putComponentTemplate({
       name: config.componentTemplate.name,
-      body: config.componentTemplate.body,
+      ...config.componentTemplate.body,
     })
     .catch((err) => {
       console.error(err.meta.body);
@@ -65,7 +65,7 @@ async function main() {
   await client.indices
     .putIndexTemplate({
       name: config.indexTemplate.name,
-      body: config.indexTemplate.body,
+      ...config.indexTemplate.body,
     })
     .catch((err) => {
       console.error(err.meta.body);

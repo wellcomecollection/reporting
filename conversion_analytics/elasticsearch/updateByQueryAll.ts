@@ -17,7 +17,7 @@ const client = new Client({
 async function main() {
   const { dataStreamName } = await prompts([
     {
-      type: "multiselect",
+      type: "select",
       name: "dataStreamName",
       message: "Which data stream would you like to update?",
       choices: [

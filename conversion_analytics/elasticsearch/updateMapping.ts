@@ -20,7 +20,7 @@ const client = new Client({
 async function main() {
   const { dataStreamName } = await prompts([
     {
-      type: "multiselect",
+      type: "select",
       name: "dataStreamName",
       message: "Which data stream's mapping would you like to update?",
       choices: [
@@ -43,7 +43,7 @@ async function main() {
   await client.cluster
     .putComponentTemplate({
       name: config.componentTemplate.name,
-      body: config.componentTemplate.body,
+      ...config.componentTemplate.body,
     })
     .catch((err) => {
       console.error(err.meta.body);
@@ -54,7 +54,7 @@ async function main() {
   await client.indices
     .putIndexTemplate({
       name: config.indexTemplate.name,
-      body: config.indexTemplate.body,
+      ...config.indexTemplate.body,
     })
     .catch((err) => {
       console.error(err.meta.body);
@@ -64,7 +64,7 @@ async function main() {
   // update existing mapping
   await client.indices.putMapping({
     index: config.indexTemplate.indexPatternName,
-    body: config.componentTemplate.body.template.mappings,
+    ...config.componentTemplate.body.template.mappings,
   });
 }
 
