@@ -1,44 +1,86 @@
-import dotenv from 'dotenv'
-import { Client } from '@elastic/elasticsearch'
-import * as ilm from './ilm'
-import * as componentTemplate from './component_template'
-import * as indexTemplate from './index_template'
+import * as conversionConfig from "./metrics-conversion-prod";
+import * as similarityConfig from "./metrics-similarity-prod";
 
-dotenv.config()
+import { Client } from "@elastic/elasticsearch";
+import dotenv from "dotenv";
+import prompts from "prompts";
+
+dotenv.config();
 
 const client = new Client({
   cloud: {
-    id: process.env.ELASTIC_CLOUD_ID!
+    id: process.env.ELASTIC_CLOUD_ID!,
   },
   auth: {
     username: process.env.ELASTIC_USERNAME!,
-    password: process.env.ELASTIC_PASSWORD!
-  }
-})
+    password: process.env.ELASTIC_PASSWORD!,
+  },
+});
 
-async function main () {
+async function main() {
+  const { dataStreamName } = await prompts([
+    {
+      type: "select",
+      name: "dataStreamName",
+      message: "Which data stream would you like to create?",
+      choices: [
+        { title: "metrics-conversion-prod", value: "metrics-conversion-prod" },
+        { title: "metrics-similarity-prod", value: "metrics-similarity-prod" },
+      ],
+    },
+  ]);
+
+  let config: typeof conversionConfig | typeof similarityConfig;
+  if (dataStreamName === "metrics-conversion-prod") {
+    config = conversionConfig;
+  } else if (dataStreamName === "metrics-similarity-prod") {
+    config = similarityConfig;
+  } else {
+    throw new Error("Invalid data stream name");
+  }
+
   // create ilm
-  await client.ilm.putLifecycle({
-    policy: ilm.name,
-    body: ilm.body
-  }).catch(err => { console.error(err.meta.body); throw err })
+  await client.ilm
+    .putLifecycle({
+      name: config.ilm.name,
+      policy: config.ilm.body,
+    })
+    .catch((err) => {
+      console.error(err.meta.body);
+      throw err;
+    });
 
   // create component template
-  await client.cluster.putComponentTemplate({
-    name: componentTemplate.name,
-    body: componentTemplate.body
-  }).catch(err => { console.error(err.meta.body); throw err })
+  await client.cluster
+    .putComponentTemplate({
+      name: config.componentTemplate.name,
+      ...config.componentTemplate.body,
+    })
+    .catch((err) => {
+      console.error(err.meta.body);
+      throw err;
+    });
 
   // create index template
-  await client.indices.putIndexTemplate({
-    name: indexTemplate.name,
-    body: indexTemplate.body
-  }).catch(err => { console.error(err.meta.body); throw err })
+  await client.indices
+    .putIndexTemplate({
+      name: config.indexTemplate.name,
+      ...config.indexTemplate.body,
+    })
+    .catch((err) => {
+      console.error(err.meta.body);
+      throw err;
+    });
 
   // create data stream
-  await client.indices.createDataStream({
-    name: indexTemplate.indexPatternName
-  }).catch(err => { console.error(err.meta.body); throw err })
+  await client.indices
+    .createDataStream({
+      name: config.indexTemplate.indexPatternName,
+    })
+    .catch((err) => {
+      console.error(err.meta.body);
+      throw err;
+    });
 }
 
-main()
+main();
