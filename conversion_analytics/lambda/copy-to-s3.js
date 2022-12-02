@@ -4,7 +4,7 @@ const sts = new AWS.STS()
 
 sts.assumeRole(
   {
-    RoleArn: 'arn:aws:iam::130871440101:role/experience-admin',
+    RoleArn: 'arn:aws:iam::130871440101:role/experience-developer',
     RoleSessionName: 'SearchLoggerCopytoS3'
   },
   (err, data) => {
