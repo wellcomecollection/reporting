@@ -17,3 +17,5 @@ In chronological order, we've used:
   Expanded the range of events tracked to include item and image views in order to get a better sense of the conversion journey. Major shift in the structure of the collected data.
 - `metrics-conversion-prod`
   Our most recent version of the data pipeline places the same events from the `conversion` pipeline into a more conservative, restricted version of the same mapping. It is set up as a [data-stream](https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html) instead of a regular index.
+- `metrics-similarity-prod`
+  A new index for tracking the use of the similar images feature. This is a data-stream as well, built and deployed in the same way as the `metrics-conversion-prod` index with a more permissive mapping while we work out the best way to structure the data.
