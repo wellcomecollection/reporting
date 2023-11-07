@@ -13,7 +13,7 @@ resource "aws_lambda_function" "lambda_function" {
 
   role    = aws_iam_role.iam_role.arn
   handler = "${var.handler}.main"
-  runtime = "python3.6"
+  runtime = "python3.6" // this one doesn't come up in the list of lambdas to update. Can't be found anywhere in the AWS console :/ 
   timeout = var.timeout
 
   dead_letter_config {
