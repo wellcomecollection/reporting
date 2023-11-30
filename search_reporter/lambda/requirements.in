@@ -1,8 +1,0 @@
-elasticsearch>=7.0.0,<8.0.0
-httpx
-humanize
-python-dateutil
-pytz
-stringcase
-weco-datascience==0.1.5
-pandas
