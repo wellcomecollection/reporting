@@ -15,16 +15,15 @@ botocore==1.22.3
 certifi==2021.10.8
     # via
     #   elasticsearch
+    #   httpcore
     #   httpx
-charset-normalizer==2.0.7
-    # via httpx
 elasticsearch==7.15.1
     # via -r requirements.in
 h11==0.12.0
     # via httpcore
-httpcore==0.13.7
+httpcore==0.15.0
     # via httpx
-httpx==0.20.0
+httpx==0.23.0
     # via -r requirements.in
 idna==3.3
     # via
@@ -47,8 +46,6 @@ sniffio==1.2.0
     #   anyio
     #   httpcore
     #   httpx
-typing-extensions==3.10.0.2
-    # via anyio
 urllib3==1.26.7
     # via
     #   botocore
